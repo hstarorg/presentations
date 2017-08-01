@@ -19,25 +19,246 @@
   <div class="reveal left">
     <div class="slides left">
       <section>
-        <h2>Web前端基础-HTML&CSS</h2>
         <section>
-          <h3>Agenda</h3>
+          <h2>Web前端基础-HTML&CSS</h2>
+          <!-- <h3>Agenda</h3> -->
           <ul>
-            <li> HTML发展史 </li>
-            <li> HTML5 </li>
-            <li> CSS简介 </li>
-            <li> CSS选择器 </li>
-            <li> CSS Next </li>
+            <li>
+              HTML
+              <ul>
+                <li> HTML简介 </li>
+                <li> HTML5 </li>
+                <li> Markdown </li>
+              </ul>
+            </li>
+            <li>CSS
+              <ul>
+                <li> CSS简介 </li>
+                <li> CSS盒子模型 </li>
+                <li> CSS选择器 </li>
+                <li> CSS Next </li>
+                <li> CSS 预/后处理器 </li>
+              </ul>
+            </li>
           </ul>
+
         </section>
       </section>
+      <!-- HTML简介 -->
       <section>
+        <section>
+          <h2>HTML简介</h2>
+        </section>
         <section>
           <h3>什么是HTML</h3>
           <ul>
-            <li class="fragment">全称 <b>Hyper Text Markup Language</b></li>
+            <li class="fragment">全称 Hyper Text Markup Language（超文本标记语言）</li>
             <li class="fragment">描述网页的标记语言</li>
+            <li class="fragment"><a href="https://zh.wikipedia.org/wiki/HTML" target="_blank">HTML Wiki</a></li>
           </ul>
+        </section>
+        <section>
+          <h3>HTML中的几个概念</h3>
+          <ul>
+            <li class="fragment">元素</li>
+            <li class="fragment">标签</li>
+            <li class="fragment">属性</li>
+            <li class="fragment">
+              <code data-trim data-noescape>
+                <mark>&lt;a href="https://newegg.com/">新蛋网&lt;/a></mark>
+              </code>
+            </li>
+          </ul>
+        </section>
+      </section>
+      <!-- HTML5 -->
+      <section>
+        <section>
+          <h2>HTML5</h2>
+        </section>
+        <section>
+          <h3>所谓HTML5</h3>
+          <ul>
+            <li class="fragment">HTML5是HTML的最新修订版本</li>
+            <li class="fragment">广义论及HTML5时，实际指的是包括HTML、CSS和JavaScript在内的一套技术组合</li>
+            <li class="fragment"><a href="https://zh.wikipedia.org/wiki/HTML5" target="_blank">HTML5 Wiki</a></li>
+          </ul>
+        </section>
+        <section>
+          <h3>HTML5语义化标签</h3>
+          <ul>
+            <li class="fragment">&lt;section></li>
+            <li class="fragment">&lt;article></li>
+            <li class="fragment">&lt;header></li>
+            <li class="fragment">&lt;footer></li>
+            <li class="fragment">&lt;nav></li>
+            <li class="fragment">&lt;video></li>
+            <li class="fragment">&lt;audio></li>
+            <li class="fragment">&lt;canvas></li>
+            <li class="fragment">等等...</li>
+          </ul>
+        </section>
+        <section>
+          <h3>HTML5新的API</h3>
+          <ul>
+            <li class="fragment">地理位置API</li>
+            <li class="fragment">本地数据库（WebSql、IndexedDB）</li>
+            <li class="fragment">文件处理</li>
+            <li class="fragment">等等...</li>
+          </ul>
+        </section>
+      </section>
+      <!-- Markdown -->
+      <section>
+        <section>
+          <h2>Markdown</h2>
+          <p>一种轻量级的标记语言，使用易读易写的纯文本格式编写文档。</p>
+        </section>
+        <section>
+          <h3>语法</h3>
+          <div style="width: 50%; float:left">
+            <code>
+            <pre>
+# 一级标题
+
+## 二级标题
+
+###### 六级标题
+
+- 无序列表
+- 无序列表
+
+1. 有序列表
+2. 有序列表
+
+> 我是引用文字
+
+[我是一个链接](http://xxx.com)
+
+![我是一个图片](http://img.com)
+            </pre>
+          </code>
+          </div>
+          <img src="slides/html-css-base/images/md.png" alt="Markdown结果">
+        </section>
+      </section>
+      <!-- CSS Base -->
+      <section>
+        <section>
+          <h2>CSS简介</h2>
+        </section>
+        <section>
+          <h3>什么是CSS</h3>
+          <ul>
+            <li class="fragment">全称 Cascading Style Sheets（层叠样式表）</li>
+            <li class="fragment">用来为 <b>结构化文档</b> 添加样式的计算机语言</li>
+            <li class="fragment"><a href="https://zh.wikipedia.org/wiki/%E5%B1%82%E5%8F%A0%E6%A0%B7%E5%BC%8F%E8%A1%A8" target="_blank">CSS Wiki</a></li>
+          </ul>
+        </section>
+      </section>
+      <!-- CSS Box sizing -->
+      <section>
+        <section>
+          <h2>CSS盒子模型</h2>
+        </section>
+        <section>
+          <h3>盒子模型</h3>
+          <img src="slides/html-css-base/images/box.png" alt="盒子模型图">
+        </section>
+      </section>
+      <!-- CSS Selector -->
+      <section>
+        <section>
+          <h2>CSS选择器</h2>
+        </section>
+        <section>
+          <h3>基本选择器</h3>
+          <ul>
+            <li class="fragment">类型选择器（如 div, p）</li>
+            <li class="fragment">类选择器（如 .xxx）</li>
+            <li class="fragment">ID选择器（如 #xx）</li>
+            <li class="fragment">属性选择器（如 [xxx]）</li>
+            <li class="fragment">万能选择器（如 *）</li>
+          </ul>
+        </section>
+        <section>
+          <h3>伪类选择器</h3>
+          <ul>
+            <li class="fragment">:link</li>
+            <li class="fragment">:visited</li>
+            <li class="fragment">:hover</li>
+            <li class="fragment">:active</li>
+            <li class="fragment">:focus</li>
+            <li class="fragment">:target（元素被URL标记）</li>
+            <li class="fragment">:lang（向带有指定lang属性的元素添加样式）</li>
+          </ul>
+        </section>
+        <section>
+          <h3>伪元素选择器</h3>
+          <ul>
+            <li class="fragment">::before</li>
+            <li class="fragment">::after</li>
+            <li class="fragment">::first-letter</li>
+            <li class="fragment">::first-line</li>
+            <li class="fragment">::selection（鼠标选择）</li>
+          </ul>
+        </section>
+        <section>
+          <h3>组合选择器</h3>
+          <ul>
+            <li class="fragment">A > B</li>
+            <li class="fragment">A ~ B</li>
+            <li class="fragment">A + B（紧挨着）</li>
+            <li class="fragment">A B</li>
+          </ul>
+        </section>
+        <section>
+          <h3>属性选择器玩法</h3>
+          <img src="slides/html-css-base/images/p.png" alt="">
+        </section>
+        <section>
+          <h3>选择器优先级</h3>
+          <ul>
+            <li class="fragment">Inline > ID > Class > 属性 > 标签 > 浏览器默认 </li>
+            <li class="fragment">如果使用
+              <mark>!important</mark>，则优先级最高</li>
+            <li class="fragment">优先级一致，靠加载顺序来确定，后加载的覆盖之前的</li>
+          </ul>
+        </section>
+      </section>
+      <!-- CSS Next -->
+      <section>
+        <section>
+          <h2>CSS Next</h2>
+        </section>
+        <section>
+          <h3>CSS3/4</h3>
+          <ul>
+            <li class="fragment">在CSS2.1标准之后，CSS又增加了较多特性</li>
+            <li class="fragment">至今，CSS3也还没成为标准，但已被大多数浏览器实现</li>
+            <li class="fragment">因此，我们用CSS Next来包含CSS3 / CSS4 等的一些特性</li>
+          </ul>
+        </section>
+        <section>
+          <h3>CSS Next新特性</h3>
+          <ul>
+            <li class="fragment">新增了伪元素选择器（如 :nth-child，:not）</li>
+            <li class="fragment">Animation（动画，keyframes）</li>
+            <li class="fragment">Transition（过渡）</li>
+            <li class="fragment">Transform（2D/3D变换）</li>
+            <li class="fragment">等等...</li>
+          </ul>
+        </section>
+      </section>
+      <!-- CSS 预/后处理器 -->
+      <section>
+        <section>
+          <h2>CSS 预/后处理器</h2>
+          <li class="fragment">LESS <a href="http://lesscss.org/" target="_blank">Less官网</a></li>
+          <li class="fragment">SASS <a href="http://sass-lang.com" target="_blank">Sass官网</a></li>
+          <li class="fragment">Stylus<a href="http://stylus-lang.com/" target="_blank">Stylus官网</a></li>
+          <li class="fragment">PostCSS<a href="http://postcss.org/" target="_blank">PostCSS官网</a></li>
+          <li class="fragment">等等...</li>
         </section>
       </section>
     </div>

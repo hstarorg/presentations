@@ -1,6 +1,9 @@
 // More info https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
   history: true,
+  progress: true,
+  // slideNumber: true,
+  transition: 'convex',
   // More info https://github.com/hakimel/reveal.js#dependencies
   dependencies: [
     { src: 'assets/reveal.js/plugin/markdown/marked.js' },

@@ -1,3 +1,6 @@
 .slides{
   text-align: left !important;
 }
+.slides b{
+  color: orangered;
+}
