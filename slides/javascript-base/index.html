@@ -1,0 +1,407 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <base href="/">
+  <title>Web前端基础</title>
+  <link rel="stylesheet" href="assets/reveal.js/css/reveal.css">
+  <link rel="stylesheet" href="assets/reveal.js/css/theme/black.css">
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="assets/reveal.js/lib/css/zenburn.css">
+  <link rel="stylesheet" href="app/css/common.css">
+  <!-- Printing and PDF exports -->
+  <script src="app/js/print.js"></script>
+  <style>
+    .catalog>li {
+      font-size: 32px;
+    }
+
+    .catalog ul>li {
+      font-size: 24px;
+    }
+
+    .fs-24 {
+      font-size: 24px !important;
+    }
+
+    .hide {
+      color: #222;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal left">
+    <div class="slides left">
+      <section>
+        <section>
+          <h2>Web前端基础-JavaScript</h2>
+          <!-- <h3>Agenda</h3> -->
+          <ul class="catalog">
+            <li>
+              JavaScript
+              <ul>
+                <li> 认识JavaScript </li>
+                <li> 函数/原型(链)/作用域/闭包 </li>
+                <li> ES6/7/8 </li>
+                <li> NodeJS </li>
+              </ul>
+            </li>
+            <li>工具链
+              <ul>
+                <li> 构建/打包 </li>
+                <li> 模块化/加载器 </li>
+              </ul>
+            </li>
+            <li>MVVM
+              <ul>
+                <li> Angularjs 1.x / Angular</li>
+                <li> React</li>
+                <li> Vue </li>
+              </ul>
+            </li>
+            <li>作业</li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <h1>JavaScript</h1>
+      </section>
+      <!-- 认识JavaScript -->
+      <section>
+        <section>
+          <h2>认识JavaScript</h2>
+        </section>
+        <section>
+          <h3>JavaScript重大事迹</h3>
+          <ul>
+            <li class="fragment">1995，网景的布兰登·艾克为网景浏览器开发LiveScript</li>
+            <li class="fragment">1995年底，为了搭上Java这个当时的热词，改名为JavaScript（Java与JavaScript的关系？）</li>
+            <li class="fragment">1997，几大公司（微软，网景）定义了ECMAScript语言标准</li>
+            <li class="fragment">2010，ES5发布</li>
+            <li class="fragment">2015，ES6发布</li>
+            <li class="fragment"><a href="https://zh.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript Wiki</a></li>
+          </ul>
+        </section>
+        <section>
+          <h3> 我们所认识的JavaScript </h3>
+          <ul>
+            <li class="fragment">JavaScript是解释性脚本语言（现在已经有JIT的可能性）</li>
+            <li class="fragment">完整的JavaScript包含ECMAScript（语言核心）、DOM（文档对象模型）、BOM（浏览器对象模型）</li>
+            <li class="fragment">JavaScript成为ECMAScript标准的实现之一（还有哪些？）</li>
+          </ul>
+        </section>
+      </section>
+      <!-- 函数/原型/作用域/闭包 -->
+      <section>
+        <section>
+          <h2>函数/原型/作用域/闭包</h2>
+        </section>
+        <section>
+          <h3>函数</h3>
+          <ul>
+            <li class="fragment">函数是由事件驱动的或者当它被调用时执行的可重复使用的代码块。（标准定义）</li>
+            <li class="fragment">"定义式"申明函数</li>
+            <li class="fragment">"变量式"申明函数（区别是啥？）</li>
+            <li class="fragment">扩展：函数和方法是什么关系？区别是什么？</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Demo</h3>
+          <pre><code data-trim data-noescape>
+function fun1() {
+
+}
+
+var fun2 = function () {
+
+};
+
+var obj = {
+  fun3: function () {
+
+  }
+};
+          </code></pre>
+        </section>
+        <section>
+          <h3>函数调用</h3>
+          <ul>
+            <li class="fragment">方法调用</li>
+            <li class="fragment">函数调用</li>
+            <li class="fragment">构造器调用</li>
+            <li class="fragment">apply/call 调用</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Demo</h3>
+        </section>
+        <section>
+          <h3>原型(链)</h3>
+          <ul>
+            <li class="fragment">一般面相对象语言都有类这样的概念</li>
+            <li class="fragment">但JavaScript仍然是基于原型的（ES6新增class关键字，只是语法糖）</li>
+            <li class="fragment">JS对象有一个指向一个原型对象的链，查找属性时，会层层向上，直到最顶部</li>
+            <li class="fragment">实例的原型，指向它的构造函数的prototype属性</li>
+            <li class="fragment"><a href="http://www.cnblogs.com/humin/p/4556820.html">JS继承的实现方式</a></li>
+          </ul>
+        </section>
+        <section>
+          <h3>Demo</h3>
+        </section>
+        <section>
+          <h3>作用域<span class="hide">（变量的可用范围）</span></h3>
+          <ul>
+            <li class="fragment">JS使用函数作用域</li>
+            <li class="fragment">作用域在定义时确定，无法更改</li>
+            <li class="fragment">ES6新增块级作用域（let const)</li>
+            <li class="fragment">全局作用域
+              <ul>
+                <li class="fragment">最外层函数和在最外层函数外面定义的变量拥有全局作用域</li>
+                <li class="fragment">所有末定义直接赋值的变量自动声明为拥有全局作用域</li>
+                <li class="fragment">所有window对象的属性拥有全局作用域</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>Demo</h3>
+          <pre><code data-trim data-noescape>
+function global() {
+  var i = 0;
+  console.log(i);
+
+  var inner = function () {
+    var j = 1;
+    console.log(i, j);
+  }
+
+  console.log(j);
+}
+          </code></pre>
+        </section>
+        <section>
+          <h3>闭包</h3>
+          <pre><code>
+for (var i = 0; i < 10; i++) {
+  setTimeout(function () {
+    console.log(i);
+  }, 0);
+}
+          </code></pre>
+        </section>
+      </section>
+      <!-- ES6/7/8 -->
+      <section>
+        <section>
+          <h2>ES6/7/8</h2>
+        </section>
+        <section>
+          <h3>新特性一览</h3>
+          <ul>
+            <li class="fragment">let / const </li>
+            <li class="fragment">Class关键字 </li>
+            <li class="fragment"> 解构赋值 </li>
+            <li class="fragment"> Set和Map(WeakSet, WeakMap) </li>
+            <li class="fragment"> 箭头函数 </li>
+            <li class="fragment"> Promise </li>
+            <li class="fragment"> async ... await </li>
+            <li class="fragment"> Symbol </li>
+            <li class="fragment"> 生成器 </li>
+            <li class="fragment"> 迭代器与 for...of </li>
+            <li class="fragment"> 等等... </li>
+          </ul>
+        </section>
+      </section>
+      <!-- NodeJS -->
+      <section>
+        <section>
+          <h2>NodeJS</h2>
+          <ul>
+            <li class="fragment">NodeJS是运行时，并不是语言，也不是框架</li>
+            <li class="fragment">NodeJS是前端工具链的基础</li>
+            <li class="fragment">NPM：世界上最强大，同时也是最糟糕的包管理</li>
+            <li class="fragment">Demo：几句代码实现Web Server</li>
+          </ul>
+        </section>
+      </section>
+      <!-- 工具链 -->
+      <section>
+        <h1>工具链</h1>
+      </section>
+      <!-- 7.构建-->
+      <section>
+        <section>
+          <h2>构建/打包</h2>
+        </section>
+        <section>
+          <h3>构建</h3>
+          <ul>
+            <li class="fragment">通过工具、库等，简化前端开发的过程，显著提高开发效率</li>
+            <li class="fragment">作用
+              <ul>
+                <li class="fragment">创建脚手架</li>
+                <li class="fragment">拷贝文件</li>
+                <li class="fragment">文件合并/压缩</li>
+                <li class="fragment">预处理器编译</li>
+                <li class="fragment">自动刷新浏览器</li>
+              </ul>
+            </li>
+            <li class="fragment">辅助开发者处理重复劳动</li>
+          </ul>
+        </section>
+        <section>
+          <h3>构建工具</h3>
+          <ul>
+            <li class="fragment fs-24">Grunt <a href="https://gruntjs.com/" target="_blank">官网</a>
+              <ul>
+                <li class="fragment">优点：
+                  <ul>
+                    <li class="fragment">配置化，对非开发人员友好</li>
+                    <li class="fragment">生态庞大，完善</li>
+                  </ul>
+                </li>
+                <li class="fragment">缺点：
+                  <ul>
+                    <li class="fragment">执行速度慢</li>
+                    <li class="fragment">流程不够清晰</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="fragment fs-24">Gulp <a href="https://gulpjs.com/" target="_blank">官网</a>
+              <ul>
+                <li class="fragment fs-24">优点：
+                  <ul>
+                    <li class="fragment">易用 - 代码优于配置</li>
+                    <li class="fragment">高效 - 流式任务，不产生中间文件</li>
+                    <li class="fragment">稳定 - 插件质量高</li>
+                  </ul>
+                </li>
+                <li class="fragment">缺点：
+                  <ul>
+                    <li class="fragment">需要编写代码，对非开发不友好</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>其他构建工具</h3>
+          <ul>
+            <li class="fragment">FIS3</li>
+            <li class="fragment">Brunch</li>
+          </ul>
+        </section>
+        <section>
+          <h3>打包</h3>
+          <ul>
+            <li class="fragment">Browserify <a href="http://browserify.org/" target="_blank">官网</a></li>
+            <li class="fragment">Webpack <a href="http://webpack.js.org/" target="_blank">官网</a></li>
+          </ul>
+        </section>
+      </section>
+      <!-- 9.模块化/加载器-->
+      <section>
+        <section>
+          <h2>模块化/加载器</h2>
+        </section>
+        <section>
+          <h3>模块化</h3>
+          <ul>
+            <li class="fragment">我们所遇到的问题
+              <ul>
+                <li class="fragment">命名冲突</li>
+                <li class="fragment">复杂的业务逻辑，二次修改的噩梦</li>
+                <li class="fragment">繁琐的文件依赖，怎么总是缺少文件</li>
+                <li class="fragment">超大JS文件，网页刷新不出来</li>
+              </ul>
+            </li>
+            <li class="fragment">为了解决这些，我们需要模块化</li>
+            <li class="fragment">各种模块化规范就应运而生</li>
+          </ul>
+        </section>
+        <section>
+          <h3>CommonJS</h3>
+          <ul>
+            <li class="fragment">伴随着NodeJS，我们有CommonJS规范</li>
+            <li class="fragment">然而：
+              <ul>
+                <li class="fragment">服务端JS VS. 浏览器JS</li>
+                <li class="fragment">相同代码执行多次 VS. 代码从服务器分发到多个客户端</li>
+                <li class="fragment">CPU和内存资源是瓶颈 VS. 带宽是瓶颈</li>
+                <li class="fragment">从磁盘加载 VS. 通过网络加载</li>
+              </ul>
+            </li>
+            <li class="fragment">由此可见，CommonJS并不适合客户端JS</li>
+          </ul>
+        </section>
+        <section>
+          <h3>浏览器模块化规范</h3>
+          <ul>
+            <li class="fragment">AMD</li>
+            <li class="fragment">CMD</li>
+            <li class="fragment">UMD</li>
+            <li class="fragment">ES6模块规范（浏览器暂未支持）</li>
+            <li class="fragment">但是，这些规范都缺乏浏览器原生支持，我们要使用这些模块化方法，就不得不借助于加载器</li>
+          </ul>
+        </section>
+        <section>
+          <h3>加载器</h3>
+          <ul>
+            <li class="fragment">AMD => RequireJS</li>
+            <li class="fragment">CMD => Sea.js</li>
+            <li class="fragment">UMD => any</li>
+            <li class="fragment">ES6模块 => System.js</li>
+          </ul>
+        </section>
+      </section>
+      <!-- MVVM -->
+      <section>
+        <section>
+          <h1>MVVM</h1>
+          <ul>
+            <li class="fragment">M - VM - View</li>
+            <li class="fragment">
+              <img style="height: 80%;" src="slides/javascript-base/images/mvvm.png" alt="">
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>MVVM 框架/库</h2>
+          <ul>
+            <li class="fragment">AngularJS 1.x</li>
+            <li class="fragment">Angular</li>
+            <li class="fragment">React</li>
+            <li class="fragment">Vue</li>
+          </ul>
+        </section>
+      </section>
+      <!-- 14.作业 -->
+      <section>
+        <h1>作业</h1>
+        <ul>
+          <li>将个人简历数据，通过后端（或者直接写到json中）返回</li>
+          <li>使用构建/打包工具，压缩CSS、HTML、JS</li>
+          <li>可选使用MVVM框架（加分项）</li>
+        </ul>
+      </section>
+      <section>
+        <h1>Q&A</h1>
+      </section>
+      <section>
+        <h1>Thanks.</h1>
+      </section>
+    </div>
+  </div>
+
+  <script src="assets/reveal.js/lib/js/head.min.js"></script>
+  <script src="assets/reveal.js/js/reveal.js"></script>
+
+  <script src="app/js/index.js"></script>
+</body>
+
+</html>
