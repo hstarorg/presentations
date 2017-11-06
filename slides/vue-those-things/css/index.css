@@ -1,0 +1,15 @@
+.nf {
+  font-family: 'Microsoft YaHei' !important;
+}
+
+body {
+  font-family: 'Microsoft YaHei';
+}
+
+.page1 .vue-logo {
+  transform: rotateX(180deg);
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  width: 40%;
+}
