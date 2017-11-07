@@ -1,0 +1,22 @@
+.slides {
+  text-align: left !important;
+}
+.slides b {
+  color: orangered;
+}
+
+.catalog > li {
+  font-size: 32px;
+}
+
+.catalog ul > li {
+  font-size: 24px;
+}
+
+.fs-24 {
+  font-size: 24px !important;
+}
+
+.hide {
+  color: #222;
+}

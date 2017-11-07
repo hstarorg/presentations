@@ -1,6 +1,3 @@
-.slides{
-  text-align: left !important;
-}
-.slides b{
-  color: orangered;
+.ms-font {
+  font-family: 'Microsoft YaHei' !important;
 }

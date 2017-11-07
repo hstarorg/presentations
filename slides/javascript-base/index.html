@@ -4,32 +4,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <base href="/presentations/">
+  <base href="/presentations/slides/javascript-base/">
   <title>Web前端基础</title>
-  <link rel="stylesheet" href="assets/reveal.js/css/reveal.css">
-  <link rel="stylesheet" href="assets/reveal.js/css/theme/black.css">
+  <link rel="stylesheet" href="../../reveal.js/css/reveal.css">
+  <link rel="stylesheet" href="../../reveal.js/css/theme/black.css">
   <!-- Theme used for syntax highlighting of code -->
-  <link rel="stylesheet" href="assets/reveal.js/lib/css/zenburn.css">
-  <link rel="stylesheet" href="app/css/common.css">
-  <!-- Printing and PDF exports -->
-  <script src="app/js/print.js"></script>
-  <style>
-    .catalog>li {
-      font-size: 32px;
-    }
-
-    .catalog ul>li {
-      font-size: 24px;
-    }
-
-    .fs-24 {
-      font-size: 24px !important;
-    }
-
-    .hide {
-      color: #222;
-    }
-  </style>
+  <link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css">
+  <link rel="stylesheet" href="../../app/css/common.css">
+  <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
@@ -82,7 +64,9 @@
             <li class="fragment">1997，几大公司（微软，网景）定义了ECMAScript语言标准</li>
             <li class="fragment">2010，ES5发布</li>
             <li class="fragment">2015，ES6发布</li>
-            <li class="fragment"><a href="https://zh.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript Wiki</a></li>
+            <li class="fragment">
+              <a href="https://zh.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript Wiki</a>
+            </li>
           </ul>
         </section>
         <section>
@@ -145,14 +129,18 @@ var obj = {
             <li class="fragment">但JavaScript仍然是基于原型的（ES6新增class关键字，只是语法糖）</li>
             <li class="fragment">JS对象有一个指向一个原型对象的链，查找属性时，会层层向上，直到最顶部</li>
             <li class="fragment">实例的原型，指向它的构造函数的prototype属性</li>
-            <li class="fragment"><a href="http://www.cnblogs.com/humin/p/4556820.html">JS继承的实现方式</a></li>
+            <li class="fragment">
+              <a href="http://www.cnblogs.com/humin/p/4556820.html">JS继承的实现方式</a>
+            </li>
           </ul>
         </section>
         <section>
           <h3>Demo</h3>
         </section>
         <section>
-          <h3>作用域<span class="hide">（变量的可用范围）</span></h3>
+          <h3>作用域
+            <span class="hide">（变量的可用范围）</span>
+          </h3>
           <ul>
             <li class="fragment">JS使用函数作用域</li>
             <li class="fragment">作用域在定义时确定，无法更改</li>
@@ -255,7 +243,8 @@ for (var i = 0; i < 10; i++) {
         <section>
           <h3>构建工具</h3>
           <ul>
-            <li class="fragment fs-24">Grunt <a href="https://gruntjs.com/" target="_blank">官网</a>
+            <li class="fragment fs-24">Grunt
+              <a href="https://gruntjs.com/" target="_blank">官网</a>
               <ul>
                 <li class="fragment">优点：
                   <ul>
@@ -271,7 +260,8 @@ for (var i = 0; i < 10; i++) {
                 </li>
               </ul>
             </li>
-            <li class="fragment fs-24">Gulp <a href="https://gulpjs.com/" target="_blank">官网</a>
+            <li class="fragment fs-24">Gulp
+              <a href="https://gulpjs.com/" target="_blank">官网</a>
               <ul>
                 <li class="fragment fs-24">优点：
                   <ul>
@@ -299,8 +289,12 @@ for (var i = 0; i < 10; i++) {
         <section>
           <h3>打包</h3>
           <ul>
-            <li class="fragment">Browserify <a href="http://browserify.org/" target="_blank">官网</a></li>
-            <li class="fragment">Webpack <a href="http://webpack.js.org/" target="_blank">官网</a></li>
+            <li class="fragment">Browserify
+              <a href="http://browserify.org/" target="_blank">官网</a>
+            </li>
+            <li class="fragment">Webpack
+              <a href="http://webpack.js.org/" target="_blank">官网</a>
+            </li>
           </ul>
         </section>
       </section>
@@ -398,10 +392,10 @@ for (var i = 0; i < 10; i++) {
     </div>
   </div>
 
-  <script src="assets/reveal.js/lib/js/head.min.js"></script>
-  <script src="assets/reveal.js/js/reveal.js"></script>
+  <script src="../../reveal.js/lib/js/head.min.js"></script>
+  <script src="../../reveal.js/js/reveal.js"></script>
 
-  <script src="app/js/index.js"></script>
+  <script src="index.js"></script>
 </body>
 
 </html>

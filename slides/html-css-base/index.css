@@ -1,0 +1,10 @@
+.catalog ul > li {
+  font-size: 30px;
+}
+
+.slides {
+  text-align: left !important;
+}
+.slides b {
+  color: orangered;
+}
