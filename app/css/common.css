@@ -48,6 +48,13 @@
   list-style: none;
 }
 
+.reveal .col-2{
+  width: 50%;
+}
+.reveal .col-3{
+  width: 33.33333%;
+}
+
 /* 标签容器样式 */
 .reveal .tag-container {
   border: 1px solid #ccc;

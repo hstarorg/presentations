@@ -7,16 +7,14 @@
   font-family: 'Microsoft YaHei';
 }
 
-.page1 .vue-logo {
+.section1 .vue-logo {
   transform: rotateX(180deg);
   border: none;
   background: transparent;
   box-shadow: none;
   width: 40%;
 }
-.page3 .ul-inline > li {
-  width: 33.33333%;
-}
-.page4 .ul-inline > li {
+.section3 .ul-inline > li,
+.section3-1 .ul-inline > li {
   width: 33.33333%;
 }
