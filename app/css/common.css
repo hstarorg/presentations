@@ -10,57 +10,74 @@
   font-size: 20px;
 }
 
+
 /* 对其方式、颜色与浮动 */
+
 .reveal .text-center {
   text-align: center;
 }
+
 .reveal .text-right {
   text-align: right;
 }
+
 .reveal .text-left {
   text-align: left;
 }
+
 .reveal .pull-left {
   float: left;
 }
+
 .reveal .pull-right {
   float: right;
 }
+
 .reveal .text-danger {
   color: #c12e2a;
 }
+
 .reveal .text-primary {
   color: #337ab7;
 }
+
 .reveal .text-gray {
   color: #ccc;
 }
 
+
 /* UL样式 */
-.reveal .ul-inline > li {
+
+.reveal .ul-inline>li {
   list-style: none;
   float: left;
 }
+
 .reveal .no-list-style {
   list-style: none;
 }
-.reveal .no-list-style > li {
+
+.reveal .no-list-style>li {
   list-style: none;
 }
 
-.reveal .col-2{
+.reveal .col-2>li {
   width: 50%;
 }
-.reveal .col-3{
+
+.reveal .col-3>li {
   width: 33.33333%;
 }
 
+
 /* 标签容器样式 */
+
 .reveal .tag-container {
   border: 1px solid #ccc;
   margin-top: 10px;
   padding: 10px;
 }
+
 .reveal .tag-container span {
   margin-right: 10px;
   margin-bottom: 10px;

@@ -52,25 +52,9 @@
       <section class="section2">
         <section>
           <ul>
-            <li class="fragment">我认识的 Vue
-              <ul class="font-20">
-                <li>Vue
-                  <small>or</small> Angular
-                  <small>or</small> React</li>
-                <li>当你会Vue，我会认为...</li>
-              </ul>
-            </li>
-            <li class="fragment">Vue 项目结构&全家桶
-              <ul class="font-20">
-                <li>目录划分我之见</li>
-                <li>引入全家桶</li>
-              </ul>
-            </li>
-            <li class="fragment">迁移之路
-              <ul class="font-20">
-                <li>那些年我们写过的jQuery、AngularJs</li>
-              </ul>
-            </li>
+            <li class="fragment">我认识的 Vue </li>
+            <li class="fragment">Vue 项目结构&全家桶 </li>
+            <li class="fragment">迁移之路 </li>
             <li class="fragment">常见问题</li>
           </ul>
         </section>
@@ -207,20 +191,165 @@
           <h3>目录划分我之见</h3>
         </section>
         <section>
-          <h4>通用项目结构</h4>
+          <h4>通用项目层次</h4>
           <img src="images/project-structure.png" alt="">
         </section>
         <section>
-          <ul class="ul-inline col-2">
-            <li>
+          <h4>目录结构进化</h4>
+          <ul class="ul-inline col-3">
+            <li class="fragment">
               <img src="images/folder1.png" alt="">
             </li>
+            <li class="fragment" style="text-align:center;">
+              <h2>-></h2>
+            </li>
+            <li class="fragment">
+              <img src="images/folder2.jpg" alt="">
+            </li>
           </ul>
+        </section>
+        <section>
+          <h4>插件/组件库目录结构</h4>
+          <ul class="ul-inline">
+            <li class="pull-left" style="width: 30%;">
+              <img src="images/folder2-1.jpg" alt="">
+            </li>
+            <li class="pull-left" style="width: 70%;">
+              <ul class="no-list-style font-20">
+                <li class="fragment">1、具有业务无关性</li>
+                <li class="fragment">2、跨项目共享</li>
+                <li class="fragment">3、Maybe 开源？</li>
+                <li class="fragment">4、开发一个组件库：
+                  <pre><code class="hljs" data-trim>
+                      // index.js content
+                      import { COMPONENTS } from './components';
+
+                      const install = Vue => {
+                        if (install.installed) return;
+                        install.installed = true;
+                        COMPONENTS.forEach(comp => {
+                          Vue.component(comp.name, comp);
+                        });
+                      };
+
+                      // Auto install
+                      if (typeof window !== 'undefined' && window.Vue) {
+                        install(window.Vue);
+                      };
+
+                      export default {
+                        install,
+                        version: '0.0.1'
+                      };
+                      </code></pre>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>常规项目目录结构</h4>
+          <ul class="ul-inline">
+            <li class="pull-left" style="width: 30%;">
+              <img src="images/folder2-2.jpg" alt="">
+            </li>
+            <li class="pull-left" style="width: 70%;">
+              <ul class="no-list-style font-20">
+                <li class="fragment">1、组件</li>
+                <li class="fragment">2、页面</li>
+                <li class="fragment">3、Filters & Utils</li>
+                <li class="fragment">4、动态加载页面/组件：
+                  <pre><code class="hljs" data-trim>
+                        import App from './app/App';
+
+                        // import Home from './home/Home';
+                        // import About from './about/About';
+                        // import Layout from './layout/Layout';
+                        // import NotFound from './notfound/NotFound';
+
+
+                        const Layout = () => import('./layout/Layout');
+                        const Home = () => import('./home/Home');
+                        const About = () => import('./about/About');
+                        const NotFound = () => import('./notfound/NotFound');
+
+                        export {
+                          App,
+                          Home,
+                          About,
+                          NotFound,
+                          Layout
+                        };
+
+                    </code></pre>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>复杂项目目录，拆分模块</h4>
+          <ul class="ul-inline">
+            <li class="pull-left" style="width: 30%;">
+              <img src="images/folder2-3.jpg" alt="">
+            </li>
+            <li class="pull-left" style="width: 70%;">
+              <ul class="no-list-style font-20">
+                <li class="fragment">1、项目模块化</li>
+                <li class="fragment">2、每个模块类似一个简单项目</li>
+                <li class="fragment">3、统一导出</li>
+                <li class="fragment">
+                  <pre><code data-trim>
+                      // modules/product/pages/index.js
+                      const Page21 = () => import(/* webpackChunkName: "product" */'./page21/Page21');
+                      const Page22 = () => import(/* webpackChunkName: "product" */'./page22/Page22');
+                      const Layout = () => import(/* webpackChunkName: "product" */'./layout/Layout');
+
+                      export {
+                        Layout,
+                        Page21,
+                        Page22
+                      };
+
+                      // modules/product/index.js
+                      import * as pages from './pages';
+
+                      export default {
+                        path: 'product', component: pages.Layout, children: [
+                          { path: 'page21', component: pages.Page21 },
+                          { path: 'page22', component: pages.Page22 }
+                        ]
+                      };
+
+
+                      // modules/index.js
+                      import userRotue from './user';
+                      import productRoute from './product';
+
+                      export const moduleRoutes = [
+                        userRotue,
+                        productRoute
+                      ];
+                    </code></pre>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>是不是还缺了点什么？</h4>
+          <h4 class="fragment">模块和页面是如何被启动的么？</h4>
+          <h4 class="fragment highlight-red">请听下回分解！</h4>
         </section>
       </section>
       <section class="section4-2">
         <section>
           <h3>引入全家桶</h3>
+          <img class="fragment" src="images/vue-all.png" alt="">
+        </section>
+        <section>
+          <h4>Vue-Router</h4>
+
         </section>
       </section>
 

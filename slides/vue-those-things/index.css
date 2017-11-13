@@ -7,6 +7,10 @@
   font-family: 'Microsoft YaHei';
 }
 
+ul {
+  margin-left: 0;
+}
+
 .section1 .vue-logo {
   transform: rotateX(180deg);
   border: none;
@@ -14,7 +18,8 @@
   box-shadow: none;
   width: 40%;
 }
-.section3 .ul-inline > li,
-.section3-1 .ul-inline > li {
+
+.section3 .ul-inline>li,
+.section3-1 .ul-inline>li {
   width: 33.33333%;
 }
