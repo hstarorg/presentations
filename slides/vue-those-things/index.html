@@ -365,11 +365,37 @@
           </ul>
         </section>
         <section>
+          <h3>似乎记起了什么！</h3>
+          <pre class="fragment"><code class="hljs" data-trim>
+              import Vue from 'vue';
+              import VueRouter from 'vue-router';
+              Vue.use(VueRouter);
+
+              import * as pages from './pages';
+              import { moduleRoutes } from './modules';
+
+              const routes = [
+                {
+                  path: '', component: pages.Layout, children: [
+                    { path: '', component: pages.Home },
+                    { path: 'about', component: pages.About },
+                    ...moduleRoutes
+                  ]
+                },
+                { path: '*', component: pages.NotFound }
+              ];
+
+              export const router = new VueRouter({
+                routes
+              });
+              </code></pre>
+        </section>
+        <section>
           <h3>Vuex</h3>
           <ul class="no-list-style">
-            <li>1、当你不清楚 Vuex 有什么用时，请不要使用它！</li>
-            <li>2、当你没有状态共享时，不必使用它！</li>
-            <li>3、/(ㄒoㄒ)/~~，编不下去了，我不喜欢用 Vuex！</li>
+            <li class="fragment">1、当你不清楚 Vuex 有什么用时，请不要使用它！</li>
+            <li class="fragment">2、当你没有状态共享时，不必使用它！</li>
+            <li class="fragment">3、/(ㄒoㄒ)/~~，编不下去了，我不太喜欢重用 Vuex！</li>
           </ul>
         </section>
       </section>
