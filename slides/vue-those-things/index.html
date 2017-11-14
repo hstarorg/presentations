@@ -54,8 +54,8 @@
           <ul>
             <li class="fragment">我认识的 Vue </li>
             <li class="fragment">Vue 项目结构&全家桶 </li>
-            <li class="fragment">迁移之路 </li>
-            <li class="fragment">常见问题</li>
+            <li class="fragment">应用迁移之路</li>
+            <li class="fragment">那些小Case</li>
           </ul>
         </section>
       </section>
@@ -337,9 +337,30 @@
           </ul>
         </section>
         <section>
-          <h4>是不是还缺了点什么？</h4>
-          <h4 class="fragment">模块和页面是如何被启动的么？</h4>
-          <h4 class="fragment">请听下回分解！</h4>
+          <h4>最后：粘合剂</h4>
+          <pre class="fragment"><code class="hljs" data-trim>
+            import Vue from 'vue';
+            import VueRouter from 'vue-router';
+            Vue.use(VueRouter);
+
+            import * as pages from './pages';
+            import { moduleRoutes } from './modules';
+
+            const routes = [
+              {
+                path: '', component: pages.Layout, children: [
+                  { path: '', component: pages.Home },
+                  { path: 'about', component: pages.About },
+                  ...moduleRoutes
+                ]
+              },
+              { path: '*', component: pages.NotFound }
+            ];
+
+            export const router = new VueRouter({
+              routes
+            });
+            </code></pre>
         </section>
       </section>
       <section class="section4-2">
@@ -365,37 +386,26 @@
           </ul>
         </section>
         <section>
-          <h3>似乎记起了什么！</h3>
-          <pre class="fragment"><code class="hljs" data-trim>
-              import Vue from 'vue';
-              import VueRouter from 'vue-router';
-              Vue.use(VueRouter);
-
-              import * as pages from './pages';
-              import { moduleRoutes } from './modules';
-
-              const routes = [
-                {
-                  path: '', component: pages.Layout, children: [
-                    { path: '', component: pages.Home },
-                    { path: 'about', component: pages.About },
-                    ...moduleRoutes
-                  ]
-                },
-                { path: '*', component: pages.NotFound }
-              ];
-
-              export const router = new VueRouter({
-                routes
-              });
-              </code></pre>
+          <h3>Vuex</h3>
+          <ul class="ul-inline col-2">
+            <li class="fragment">
+              <img src="images/vuex-flow.png" alt="">
+            </li>
+            <li class="fragment">
+              <img src="images/vuex.png" alt="">
+            </li>
+          </ul>
         </section>
         <section>
-          <h3>Vuex</h3>
           <ul class="no-list-style">
             <li class="fragment">1、当你不清楚 Vuex 有什么用时，请不要使用它！</li>
             <li class="fragment">2、当你没有状态共享时，不必使用它！</li>
             <li class="fragment">3、/(ㄒoㄒ)/~~，编不下去了，我不太喜欢重用 Vuex！</li>
+            <li class="fragment">
+              <strong class="text-danger">当你觉得需要Vuex了，再来引入吧！
+                <span class="fragment">自然而然！</span>
+              </strong>
+            </li>
           </ul>
         </section>
       </section>
@@ -403,20 +413,41 @@
       <!-- section5 迁移之路 -->
       <section class="section5">
         <section>
-          <h2>迁移之路</h2>
+          <h2>应用迁移之路</h2>
         </section>
-        <section></section>
-      </section>
-      <section class="section5-1">
         <section>
-          <h3>那些年我们用过的jQuery / AngularJS</h3>
+          <h3>Why?</h3>
+          <ul class="no-list-style">
+            <li class="fragment">1、或多或少，我们都可能会有些旧项目改造升级</li>
+            <li class="fragment">2、选MV*？
+              <span class="fragment">Angular?</span>
+              <span class="fragment">React?</span>
+              <span class="fragment text-danger">Vue.js</span>
+            </li>
+            <li class="fragment">3、整体迁移，一步到位！
+              <span class="fragment text-danger">现实么？</span>
+            </li>
+            <li class="fragment">更好的迁移之路是？
+              <span class="fragment text-danger">页面级别的迁移！</span>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>非单页迁移（jQuery）</h3>
+
+        </section>
+        <section>
+          <h3>单页迁移（Angular.JS）</h3>
+        </section>
+        <section>
+          <h3 class="text-danger">以上都是我猜的！</h4>
         </section>
       </section>
 
       <!-- section6 Vue常见问题解析 -->
       <section class="section6">
         <section>
-          <h2>Vue常见问题</h2>
+          <h2>那些小Case</h2>
         </section>
         <section>
 
@@ -424,13 +455,20 @@
       </section>
 
       <!-- section7 The end -->
-      <section class="section6">
+      <section class="section7">
         <section>
           <h2>Q & A</h2>
         </section>
         <section>
           <h2>The end!</h2>
           <h4 class="text-danger">Thank you!</h4>
+        </section>
+      </section>
+
+      <!-- section7 公司招聘 -->
+      <section class="section8">
+        <section>
+          <h2>End 之后</h2>
         </section>
       </section>
     </div>
