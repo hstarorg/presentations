@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <base href="/presentations/slides/vue-those-things/">
   <title>Vue开发那些事</title>
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../../reveal.js/css/reveal.css">
   <link rel="stylesheet" href="../../reveal.js/css/theme/league.css" id="theme">
   <!-- Theme used for syntax highlighting of code -->
@@ -522,6 +523,95 @@
         </section>
         <section>
           <h4>Q1：为啥我修改了数据，UI不刷新？</h4>
+          <pre class="fragment"><code class="hljs" data-trim>
+            <template>
+              <div class="page-app">
+                Show a random string:
+                <strong>{{user.rnd}}</strong>
+                <hr>
+                <button @click="setUserName">Set Name</button>
+              </div>
+            </template>
+            &lt;script>
+              export default {
+                data() {
+                  return {
+                    user: {}
+                  };
+                },
+                methods: {
+                  setUserName() {
+                    this.user.rnd = Math.random().toString(16);
+                  }
+                }
+              };
+            &lt;/script>
+          </code></pre>
+        </section>
+        <section>
+          <h4>How?</h4>
+          <div class="row">
+            <div class="col-xs-4">
+              <img src="images/ob-1.jpg" alt="" class="fragment">
+            </div>
+            <div class="col-xs-4">
+              <img src="images/ob-2.jpg" alt="" class="fragment">
+            </div>
+            <div class="col-xs-4">
+              <img src="images/ob-3.jpg" alt="" class="fragment">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              <img src="images/ob-4.jpg" alt="" class="fragment">
+            </div>
+            <div class="col-xs-6">
+              <img src="images/ob-5.jpg" alt="" class="fragment">
+            </div>
+          </div>
+        </section>
+        <section>
+          <h4>Why?</h4>
+          <div class="fragment">
+            <pre><code class="hljs" data-trim>
+                var user = {};
+                user.name = 'XXX';
+                </code></pre>
+          </div>
+          <div class="fragment">
+            <pre><code class="hljs" data-trim>
+                function defineReactive(obj, key, value) {
+                  var property = Object.getOwnPropertyDescriptor(obj, key);
+                  var getter = property && property.get;
+                  var setter = property && property.set;
+                  Object.defineProperty(obj, key, {
+                    configurable: true,
+                    enumerable: true,
+                    get() {
+                      return getter ? getter.call(obj) : value;
+                    },
+                    set(newVal) {
+                      // 先取出当前值
+                      var val = getter ? getter.call(obj) : value;
+                      // 值一样，直接return
+                      if (newVal === val || (newVal !== newVal && val !== val)) {
+                        return;
+                      }
+                      // 把值设置回去
+                      if (setter) {
+                        setter.call(obj, newVal);
+                      } else {
+                        value = newVal;
+                      }
+                      console.log('我被改变了');
+                      // todo: 这里可以发布通知
+                    }
+                  })
+                }
+                var user = {};
+                defineReactive(user, 'name', 'abc');
+              </code></pre>
+          </div>
         </section>
         <section>
           <h4>Q2：多个组件之间数据如何传递？</h4>
