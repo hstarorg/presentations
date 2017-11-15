@@ -433,14 +433,84 @@
           </ul>
         </section>
         <section>
-          <h3>非单页迁移（jQuery）</h3>
-
-        </section>
-        <section>
           <h3>单页迁移（Angular.JS）</h3>
+          <ul class="no-list-style ul-inline">
+            <li class="pull-left" style="width:30%;">
+              <img src="images/angularjs-1.jpg" alt="">
+            </li>
+            <li class="pull-left" style="width:70%;">
+              <pre><code class="hljs" data-trim>
+               // app.js
+               const basePath = 'src';
+               angular.module('app', ['ngRoute'])
+                 .config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
+                   $locationProvider.html5Mode(true);
+                   $routeProvider
+                     .when('/', {
+                       controller: 'HomeCtrl',
+                       controllerAs: 'vm',
+                       templateUrl: `${basePath}/pages/home/home.html`
+                     })
+                     .when('/about', {
+                       controller: 'AboutCtrl',
+                       controllerAs: 'vm',
+                       templateUrl: `${basePath}/pages/about/about.html`
+                     })
+                 }]);
+
+               // home.controller.js
+               (() => {
+                class HomeCtrl {
+                  constructor() {
+                    this.hello = 'I\'m Home Page';
+                  }
+                }
+                angular.module('app')
+                  .controller('HomeCtrl', HomeCtrl);
+              })();
+
+               // index.js
+               import './src/app';
+               import './src/pages/home/home.controller';
+               import './src/pages/about/about.controller';
+               import './src/bootstrap';
+
+               // webpack.config.js
+               const path = require('path');
+               module.exports = {
+                 entry: {
+                   app: './index.js'
+                 },
+                 output: {
+                   path: path.join(__dirname, './dist'),
+                   filename: 'js/[name].js'
+                 },
+                 module: {
+                   rules: [{
+                     test: /.js$/,
+                     loader: 'babel-loader'
+                   }]
+                 }
+               };
+              </code></pre>
+            </li>
+          </ul>
         </section>
         <section>
-          <h3 class="text-danger">以上都是我猜的！</h4>
+          <h3>引入Vue</h3>
+          <ul class="no-list-style ul-inline">
+            <li class="fragment pull-left" style="width:30%;">
+              <img src="images/angularjs-2.jpg" alt="">
+            </li>
+            <li class="pull-left" style="width:70%;">
+              <img class="fragment" src="images/angularjs-3.jpg" alt="">
+              <br>
+              <img class="fragment" src="images/angularjs-4.jpg" alt="">
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3 class="text-danger">以上都是乱写的！</h4>
         </section>
       </section>
 
