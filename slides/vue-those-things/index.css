@@ -19,6 +19,14 @@ ul {
   width: 40%;
 }
 
+.section1 .avatar {
+  position: absolute;
+  display: inline-block;
+  border-radius: 50%;
+  border: none;
+  left: calc(50% - 315px / 2);
+}
+
 .section3 .ul-inline>li,
 .section3-1 .ul-inline>li {
   width: 33.33333%;
