@@ -523,30 +523,32 @@
         </section>
         <section>
           <h4>Q1：为啥我修改了数据，UI不刷新？</h4>
-          <pre class="fragment"><code class="hljs" data-trim>
-            <template>
-              <div class="page-app">
-                Show a random string:
-                <strong>{{user.rnd}}</strong>
-                <hr>
-                <button @click="setUserName">Set Name</button>
-              </div>
-            </template>
-            &lt;script>
-              export default {
-                data() {
-                  return {
-                    user: {}
+        </section>
+        <section>
+          <pre><code class="hljs" data-trim>
+                <template>
+                  <div class="page-app">
+                    Show a random string:
+                    <strong>{{user.rnd}}</strong>
+                    <hr>
+                    <button @click="setUserName">Set Name</button>
+                  </div>
+                </template>
+                &lt;script>
+                  export default {
+                    data() {
+                      return {
+                        user: {}
+                      };
+                    },
+                    methods: {
+                      setUserName() {
+                        this.user.rnd = Math.random().toString(16);
+                      }
+                    }
                   };
-                },
-                methods: {
-                  setUserName() {
-                    this.user.rnd = Math.random().toString(16);
-                  }
-                }
-              };
-            &lt;/script>
-          </code></pre>
+                &lt;/script>
+              </code></pre>
         </section>
         <section>
           <h4>How?</h4>
@@ -617,7 +619,33 @@
           <h4>Q2：多个组件之间数据如何传递？</h4>
         </section>
         <section>
+          <img src="images/vue-communicate.png" alt="">
+        </section>
+        <section>
           <h4>Q3：使用Vuex时，如何处理刷新数据丢失？</h4>
+        </section>
+        <section>
+          <pre><code class="hljs" data-trim>
+              try {
+                // 尝试还原State
+                let state = JSON.parse(sessionStorage.getItem('app_state'));
+                if (state && Object.keys(state).length > 0) {
+                  store.replaceState(state);
+                }
+              } catch (e) {}
+
+              const vm = new Vue({
+                el: '#app',
+                store,
+                render: h => h(App)
+              });
+
+              window.addEventListener('beforeunload', function (e) {
+                // 关闭或刷新时，保存State
+                var currentState = Object.assign({}, vm.$store.state);
+                sessionStorage.setItem('app_state', JSON.stringify(currentState));
+              }, false);
+          </code></pre>
         </section>
       </section>
 
