@@ -29,7 +29,9 @@ Reveal.initialize({
       src: '../../reveal.js/plugin/highlight/highlight.js',
       async: true,
       callback: function () {
-        hljs.initHighlightingOnLoad();
+        setTimeout(function () {
+          hljs.initHighlightingOnLoad();
+        });
       }
     },
     {
