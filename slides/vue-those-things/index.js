@@ -29,7 +29,7 @@ Reveal.initialize({
       src: '../../reveal.js/plugin/highlight/highlight.js',
       async: true,
       callback: function () {
-        setTimeout(function () {
+        makeSureExecute(function () {
           hljs.initHighlightingOnLoad();
         });
       }
@@ -44,6 +44,29 @@ Reveal.initialize({
     }
   ]
 });
+
+function makeSureExecute(fn, maxCount) {
+  var executed = false;
+  var counter = 0;
+  maxCount = maxCount || 5;
+
+  function runInTimer() {
+    try {
+      fn();
+      throw 'xxx';
+      executed = true;
+    } catch (e) {}
+    if (!executed) {
+      counter++;
+      if (counter > maxCount) {
+        return console.warn('已经达到最大重试次数');
+      }
+      setTimeout(runInTimer, 300);
+    }
+  }
+
+  runInTimer();
+}
 
 document.addEventListener('click', function (evt) {
   var el = evt && evt.target;
