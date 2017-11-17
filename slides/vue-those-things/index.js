@@ -53,7 +53,6 @@ function makeSureExecute(fn, maxCount) {
   function runInTimer() {
     try {
       fn();
-      throw 'xxx';
       executed = true;
     } catch (e) {}
     if (!executed) {
