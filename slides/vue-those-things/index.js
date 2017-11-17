@@ -31,7 +31,7 @@ Reveal.initialize({
       callback: function () {
         makeSureExecute(function () {
           hljs.initHighlightingOnLoad();
-        });
+        }, 50);
       }
     },
     {
@@ -57,6 +57,7 @@ function makeSureExecute(fn, maxCount) {
     } catch (e) {}
     if (!executed) {
       counter++;
+      console.log('第', counter, '次重试');
       if (counter > maxCount) {
         return console.warn('已经达到最大重试次数');
       }
