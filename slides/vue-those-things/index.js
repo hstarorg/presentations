@@ -44,5 +44,20 @@ Reveal.initialize({
 });
 
 document.addEventListener('click', function (evt) {
-  console.log(evt.target);
+  var el = evt && evt.target;
+  if (el && el.tagName === 'IMG' && (el.getAttribute('allow-enlarge') !== null)) {
+    var classList = [].slice.call(el.classList);
+    var isEnlargeMode = false;
+    if (classList.indexOf('enlarge-mode') >= 0) {
+      el.classList.remove('enlarge-mode');
+    } else {
+      el.classList.add('enlarge-mode');
+      el.style.left = '0px';
+      isEnlargeMode = true;
+    }
+    setTimeout(function () {
+      var left = (document.querySelector('.slides').clientWidth - el.width) / 2;
+      el.style.left = isEnlargeMode ? left + 'px' : 'auto';
+    });
+  }
 }, false);

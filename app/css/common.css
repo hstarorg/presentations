@@ -89,3 +89,10 @@
   padding: 2px 4px;
   border: 1px solid orange;
 }
+
+.reveal img.enlarge-mode {
+  position: fixed;
+  z-index: 1000;
+  top: 20%;
+  left: 0;
+}
