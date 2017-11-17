@@ -193,12 +193,11 @@
           <h3>目录划分我之见</h3>
         </section>
         <section>
-          <h4>通用项目层次</h4>
           <img src="images/project-structure.png" alt="">
         </section>
         <section>
-          <h4>目录结构进化</h4>
-          <ul class="ul-inline col-3">
+          <h4 style="padding-top: 40px;">目录结构进化</h4>
+          <ul class="ul-inline col-3 wp80">
             <li class="fragment">
               <img src="images/folder1.png" alt="">
             </li>
@@ -212,17 +211,17 @@
         </section>
         <section>
           <h4>插件/组件库目录结构</h4>
-          <ul class="ul-inline">
-            <li class="pull-left" style="width: 30%;">
+          <ul class="ul-inline wp80">
+            <li class="pull-left wp40">
               <img src="images/folder2-1.jpg" alt="">
             </li>
-            <li class="pull-left" style="width: 70%;">
+            <li class="pull-left wp60">
               <ul class="no-list-style font-20">
                 <li class="fragment">1、具有业务无关性</li>
                 <li class="fragment">2、跨项目共享</li>
                 <li class="fragment">3、Maybe 开源？</li>
                 <li class="fragment">4、开发一个组件库：
-                  <pre><code class="hljs" data-trim>
+                  <pre class="font-20 full-width"><code class="hljs" data-trim>
                       // index.js content
                       import { COMPONENTS } from './components';
 
@@ -251,17 +250,17 @@
         </section>
         <section>
           <h4>常规项目目录结构</h4>
-          <ul class="ul-inline">
-            <li class="pull-left" style="width: 30%;">
+          <ul class="ul-inline wp80">
+            <li class="pull-left wp40">
               <img src="images/folder2-2.jpg" alt="">
             </li>
-            <li class="pull-left" style="width: 70%;">
+            <li class="pull-left wp60">
               <ul class="no-list-style font-20">
                 <li class="fragment">1、组件</li>
                 <li class="fragment">2、页面</li>
                 <li class="fragment">3、Filters & Utils</li>
                 <li class="fragment">4、动态加载页面/组件：
-                  <pre><code class="hljs" data-trim>
+                  <pre class="font-20 full-width"><code class="hljs" data-trim>
                         import App from './app/App';
 
                         // import Home from './home/Home';
@@ -291,17 +290,17 @@
         </section>
         <section>
           <h4>复杂项目目录，拆分模块</h4>
-          <ul class="ul-inline">
-            <li class="pull-left" style="width: 30%;">
+          <ul class="ul-inline wp80">
+            <li class="pull-left wp40">
               <img src="images/folder2-3.jpg" alt="">
             </li>
-            <li class="pull-left" style="width: 70%;">
+            <li class="pull-left wp60">
               <ul class="no-list-style font-20">
                 <li class="fragment">1、项目模块化</li>
                 <li class="fragment">2、每个模块类似一个简单项目</li>
                 <li class="fragment">3、统一导出</li>
                 <li class="fragment">
-                  <pre><code data-trim>
+                  <pre class="font-20 full-width"><code class="hljs" data-trim>
                       // modules/product/pages/index.js
                       const Page21 = () => import(/* webpackChunkName: "product" */'./page21/Page21');
                       const Page22 = () => import(/* webpackChunkName: "product" */'./page22/Page22');
@@ -427,10 +426,10 @@
               <span class="fragment text-danger">Vue.js</span>
             </li>
             <li class="fragment">3、整体迁移，一步到位！
-              <span class="fragment text-danger">现实么？</span>
+              <span class="fragment text-danger">可行？</span>
             </li>
-            <li class="fragment">更好的迁移之路是？
-              <span class="fragment text-danger">页面级别的迁移！</span>
+            <li class="fragment">更好的迁移之路是：
+              <span class="fragment text-danger">页面级别的迁移（混搭）！</span>
             </li>
           </ul>
         </section>

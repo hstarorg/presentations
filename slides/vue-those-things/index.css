@@ -31,3 +31,15 @@
 .section3-1 .ul-inline>li {
   width: 33.33333%;
 }
+
+.reveal .wp40 {
+  width: 40%;
+}
+
+.reveal .wp60 {
+  width: 60%;
+}
+
+.reveal .wp80 {
+  width: 80%;
+}
