@@ -1,26 +1,26 @@
-const gulp = require("gulp4");
-const browserSync = require("browser-sync").create();
+const gulp = require('gulp');
+const browserSync = require('browser-sync').create();
 
-gulp.task("serve", done => {
+gulp.task('serve', done => {
   browserSync.init({
     server: {
-      baseDir: "./",
+      baseDir: './',
       routes: {
-        "/presentations": "./"
+        '/presentations': './'
       }
     }
   });
   done();
 });
 
-gulp.task("reload", done => {
+gulp.task('reload', done => {
   browserSync.reload();
   done();
 });
 
-gulp.task("watch", done => {
-  gulp.watch(["index.html", "slides/**/*", "app/**/*"], gulp.series("reload"));
+gulp.task('watch', done => {
+  gulp.watch(['index.html', 'slides/**/*', 'app/**/*'], gulp.series('reload'));
   done();
 });
 
-gulp.task("default", gulp.parallel("serve", "watch"));
+gulp.task('default', gulp.parallel('serve', 'watch'));
