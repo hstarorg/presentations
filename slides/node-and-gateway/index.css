@@ -1,0 +1,29 @@
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  font-family: 'Microsoft YaHei';
+}
+
+.reveal ul {
+  margin-left: 0;
+}
+
+.section3 .ul-inline>li,
+.section3-1 .ul-inline>li {
+  width: 33.33333%;
+}
+
+.reveal .wp40 {
+  width: 40%;
+}
+
+.reveal .wp60 {
+  width: 60%;
+}
+
+.reveal .wp80 {
+  width: 80%;
+}
