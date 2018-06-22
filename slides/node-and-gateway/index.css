@@ -11,6 +11,13 @@
   margin-left: 0;
 }
 
+.reveal .td-middle{
+  vertical-align: middle;
+}
+.reveal .no-border-bottom{
+  border-bottom: 0;
+}
+
 .section3 .ul-inline>li,
 .section3-1 .ul-inline>li {
   width: 33.33333%;
