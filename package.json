@@ -4,6 +4,7 @@
   "description": "my presentations.",
   "main": "gulpfile.js",
   "scripts": {
+    "start": "npm run dev",
     "dev": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
