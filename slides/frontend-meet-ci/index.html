@@ -1,24 +1,20 @@
 <!doctype html>
 <html>
-
-
   <head>
     <meta charset="utf-8">
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <base href="/presentations/slides/play-typescript/">
-    <title>玩转 TypeScript</title>
+    <base href="/presentations/slides/frontend-meet-ci/">
+    <title>当前端遇上 CI</title>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="../../reveal.js/css/theme/league.css" id="theme">
+    <link rel="stylesheet" href="../../reveal.js/css/theme/blood.css" id="theme">
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css">
     <link rel="stylesheet" href="../../app/css/common.css">
     <link rel="stylesheet" href="index.css">
   </head>
-
-
   <body>
     <div class="reveal">
       <div class="slides">
@@ -27,7 +23,7 @@
           <section>
             <h2 class="nf h1-title">
               <br>
-              玩转 TypeScript
+              当前端遇上 CI
             </h2>
             <p>
               胡敏&nbsp;
@@ -58,15 +54,15 @@
                 </a>
               </li>
               <li class="fragment">
-                邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：
+                邮&nbsp;&nbsp;&nbsp;&nbsp;箱：
                 <a href="mailto:hm910705@163.com">hm910705@163.com</a>
               </li>
               <li class="fragment">
-                Q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Q：
+                Q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Q：
                 <a href="javascript:;">1028332273</a>
               </li>
               <li class="fragment">
-                微&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;信：
+                微&nbsp;&nbsp;&nbsp;&nbsp;信：
                 <a href="javascript:;">hm910705</a>
               </li>
             </ul>
@@ -77,10 +73,10 @@
           <section>
             <h2 class="nf">Agenda</h2>
             <ul>
-              <li class="fragment">单体架构 VS. 微服务架构</li>
-              <li class="fragment">微服务之Gateway</li>
-              <li class="fragment">Gateway功能分析</li>
-              <li class="fragment">Node实现Gateway</li>
+              <li class="fragment">前端开发流程</li>
+              <li class="fragment">CI / CD</li>
+              <li class="fragment">Jenkins / Gitlab-Flow</li>
+              <li class="fragment">Other</li>
             </ul>
           </section>
         </section>
@@ -232,6 +228,9 @@
           </section>
 
 
+
+
+
           <section class="text-left">
             <h4>服务熔断（断路器）</h4>
             <p class="fragment font-20">服务不可用的时候主动停止转发，以免造成更多的雪崩效应</p>
@@ -242,6 +241,9 @@
           </section>
 
 
+
+
+
           <section class="text-left">
             <h4>监控告警</h4>
             <p class="fragment font-20">微服务复杂的调用关系，监控必不可少，搭配告警，保持服务高可用</p>
@@ -250,6 +252,9 @@
             <h4 class="fragment">分布式跟踪</h4>
             <p class="fragment font-20">跟踪具体操作的API调用链路</p>
           </section>
+
+
+
 
 
           <section class="text-left">
@@ -312,12 +317,21 @@
     </div>
 
 
+
+
+
     <script src="../../reveal.js/lib/js/head.min.js"></script>
     <script src="../../reveal.js/js/reveal.js"></script>
 
 
+
+
+
     <script src="index.js"></script>
   </body>
+
+
+
 
 
 </html>
