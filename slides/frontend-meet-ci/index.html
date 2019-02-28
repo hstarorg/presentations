@@ -80,205 +80,47 @@
             </ul>
           </section>
         </section>
-        <!-- section3 单体架构 VS. 微服务架构 -->
+        <!-- section3 前端开发流程 -->
         <section class="section3">
           <section>
-            <h2 class="nf">单体架构 VS. 微服务架构</h2>
+            <h2 class="nf">前端开发流程</h2>
           </section>
           <section>
-            <img
-              src="images/danti.jpg"
-              alt>
+            <h3>常规开发流程</h3>
+            <span class="fragment">需求分析</span>
+            <span class="fragment">=> 页面设计</span>
+            <span class="fragment">=> 编码</span>
+            <span class="fragment">=> 测试</span>
+            <span class="fragment">=> 发布</span>
+            <span class="fragment">=> 运维</span>
           </section>
           <section>
-            <img
-              src="images/wfw.jpg"
-              alt>
-            <!-- <img src="images/wfw-final.png" alt=""> -->
-          </section>
-          <section>
-            <table>
-              <thead>
-                <tr>
-                  <th>单体架构</th>
-                  <th></th>
-                  <th>微服务架构</th>
-                </tr>
-              </thead>
-              <tbody class="font-20">
-                <tr class="fragment">
-                  <td>扩容难度大</td>
-                  <td
-                    rowspan="8"
-                    class="td-middle no-border-bottom">
-                    Vs.
-                  </td>
-                  <td>天生分布式友好</td>
-                </tr>
-                <tr class="fragment">
-                  <td>迭代周期长，更新次数少</td>
-                  <td>快速迭代，快速发布</td>
-                </tr>
-                <tr class="fragment">
-                  <td>复杂度呈线性增长</td>
-                  <td>复杂度平滑，分布式系统固有的复杂性</td>
-                </tr>
-                <tr class="fragment">
-                  <td>绑定平台、语言</td>
-                  <td>可以异构/采用多种语言</td>
-                </tr>
-                <tr class="fragment">
-                  <td>一个服务需要搞定所有事情</td>
-                  <td>单一职责原则，一个服务专注一件事</td>
-                </tr>
-                <tr class="fragment">
-                  <td>事务性好，性能较高</td>
-                  <td>分布式事物难度大，有性能损失</td>
-                </tr>
-                <tr class="fragment">
-                  <td>牵一发而动全身</td>
-                  <td>容易DDD、业务边界清晰</td>
-                </tr>
-                <tr class="fragment">
-                  <td>高内聚、高耦合</td>
-                  <td>高内聚，低耦合</td>
-                </tr>
-              </tbody>
-            </table>
-          </section>
-          <section>
-            <p>采用微服务后，所有的服务都变成了一个个细小的API</p>
-            <img
-              class="fragment"
-              src="images/wfw-final.png"
-              alt
-              class="width: 100%">
-          </section>
-          <section>
-            <p class>如何管理这些API呢？</p>
-            <img
-              class="fragment"
-              src="images/why-ms.png"
-              alt>
-            <p class="fragment">让混乱变得有序</p>
-          </section>
-          <section>
-            <p>在微服务架构中，API Gateway是整体架构核心组件</p>
-          </section>
-        </section>
-        <!-- section4 微服务之Gateway -->
-        <section class="section4">
-          <section>
-            <h2 class="nf">微服务之Gateway</h2>
-          </section>
-          <section>
-            <img
-              src="images/ms-connect.png"
-              alt>
-          </section>
-          <section>
-            <img
-              src="images/gateway-pattern.png"
-              alt>
-          </section>
-          <section>
-            <h3>Gateway的优缺点</h3>
-            <div
-              class="text-left font-20"
-              style="margin-left: 20%">
-              <p class="fragment">1. 封装应用内部结构，暴露统一接口</p>
-              <p class="fragment">2. 减少了客户端与服务器端的通信次数</p>
-              <p class="fragment">3. 简化了客户端代码</p>
-              <p class="fragment">4. 非常高的可用性要求</p>
-              <p class="fragment">5. 性能损失</p>
-            </div>
-          </section>
-          <section>
-            <p>
-              对于大部分的微服务应用来说，
-              <br>
-              Gateway都可以算是银弹！
-            </p>
-          </section>
-        </section>
-        <!-- section5 Gateway功能分析 -->
-        <section class="section5">
-          <section>
-            <h2 class="nf">Gateway功能分析</h2>
-          </section>
-          <section class="text-left">
-            <h4>反向代理</h4>
-            <p class="fragment font-20">网关作为对外访问的门户，必然需要将请求转发到背后的真实API</p>
-            <h4 class="fragment">负载均衡</h4>
-            <p class="fragment font-20">每一个微服务都可以自由伸缩，此时负载均衡也就非常必要</p>
-            <h4 class="fragment">Health Check（健康检查）</h4>
-            <p class="fragment font-20">当服务具有多个实例时，网关需要知道每个实例的状态，避免将请求转发到宕机的实例上</p>
-          </section>
-          <section class="text-left">
-            <h4>认证 & 鉴权</h4>
-            <p class="fragment font-20">
-              Gateway作为服务调用的门户，需要保证调用方是可信任的，也需要检查调用方的权限，避免越权访问。
-            </p>
-            <h4 class="fragment">超时控制</h4>
-            <p class="fragment font-20">通过API配置访问超时时间，超时后立即返回，避免工作线程长时间等等</p>
-            <h4 class="fragment">请求缓存</h4>
-            <p class="fragment font-20">缓存API后端服务返回的数据，降低后端服务压力</p>
-            <h4 class="fragment">跨域支持</h4>
-            <p class="fragment font-20">处理请求跨域，后台服务不需要关注跨域配置</p>
-          </section>
-
-
-
-
-
-          <section class="text-left">
-            <h4>服务熔断（断路器）</h4>
-            <p class="fragment font-20">服务不可用的时候主动停止转发，以免造成更多的雪崩效应</p>
-            <h4 class="fragment">流量管控（限流）</h4>
-            <p class="fragment font-20">控制请求频率与一定时间请求次数</p>
-            <h4 class="fragment">服务发现/服务注册</h4>
-            <p class="fragment font-20">服务自动注册到gateway，减少人工配置</p>
-          </section>
-
-
-
-
-
-          <section class="text-left">
-            <h4>监控告警</h4>
-            <p class="fragment font-20">微服务复杂的调用关系，监控必不可少，搭配告警，保持服务高可用</p>
-            <h4 class="fragment">请求日志</h4>
-            <p class="fragment font-20">跟踪详细的请求日志，方便查错与数据分析</p>
-            <h4 class="fragment">分布式跟踪</h4>
-            <p class="fragment font-20">跟踪具体操作的API调用链路</p>
-          </section>
-
-
-
-
-
-          <section class="text-left">
-            <h4>服务编排</h4>
-            <p class="fragment font-20">将多个服务通过编排合成为一个服务，减少调用次数</p>
-            <h4 class="fragment">协议转换</h4>
-            <p class="fragment font-20">允许后台服务使用多种协议，在gateway处统一转换为HTTP</p>
-            <h4 class="fragment">灰度发布</h4>
-            <p class="fragment font-20">
-              部分客户端应用使用新版本API，其他应用继续使用以前的API，降低产品升级所影响的用户范围
-            </p>
-          </section>
-          <section>
-            <h3>开源API Gateway解决方案</h3>
+            <h3>前端的挑战</h3>
             <ul>
-              <li class="fragment">Kong：基于Nginx+Lua进行二次开发的方案</li>
-              <li class="fragment">Netflix Zuul：Java Spring Cloud组合中推荐的网关</li>
+              <li class="fragment">设计稿还原度与细节，需要来回与设计师确认</li>
+              <li class="fragment">代码修改后，构建、编译、刷新浏览器重复动作多</li>
+              <li class="fragment">单元测试相对较慢</li>
+              <li class="fragment">UI/功能测试复杂度高，执行麻烦</li>
+              <li class="fragment">发布复杂/频繁</li>
             </ul>
           </section>
         </section>
-        <!-- section6 Node实现Gateway -->
+        <!-- section4 CI / CD -->
+        <section class="section4">
+          <section>
+            <h2 class="nf">CI / CD</h2>
+          </section>
+        </section>
+        <!-- section5 Jenkins / Gitlab-Flow -->
+        <section class="section5">
+          <section>
+            <h2 class="nf">Jenkins / Gitlab-Flow</h2>
+          </section>
+        </section>
+        <!-- section6 Other -->
         <section class="section6">
           <section>
-            <h2 class="nf">Node实现Gateway</h2>
+            <h2 class="nf">DevOps</h2>
             <p class="fragment font-20">
               <a
                 href="https://github.com/hstarorg/api-gateway"
@@ -315,23 +157,8 @@
         </section>
       </div>
     </div>
-
-
-
-
-
     <script src="../../reveal.js/lib/js/head.min.js"></script>
     <script src="../../reveal.js/js/reveal.js"></script>
-
-
-
-
-
     <script src="index.js"></script>
   </body>
-
-
-
-
-
 </html>
