@@ -73,67 +73,157 @@
           <section>
             <h2 class="nf">Agenda</h2>
             <ul>
-              <li class="fragment">前端开发流程</li>
-              <li class="fragment">CI / CD</li>
-              <li class="fragment">Jenkins / Gitlab-Flow</li>
+              <li class="fragment">项目流程演进</li>
+              <li class="fragment">持续集成：What</li>
+              <li class="fragment">持续集成：How</li>
+              <li class="fragment">持续集成：Why</li>
               <li class="fragment">Other</li>
             </ul>
           </section>
         </section>
-        <!-- section3 前端开发流程 -->
+        <!-- section3 项目流程演进 -->
         <section class="section3">
           <section>
-            <h2 class="nf">前端开发流程</h2>
+            <h2 class="nf">项目流程演进</h2>
           </section>
           <section>
             <h3>常规开发流程</h3>
-            <span class="fragment">需求分析</span>
-            <span class="fragment">=> 页面设计</span>
+            <span class="fragment">需求</span>
+            <span class="fragment">=> 设计</span>
             <span class="fragment">=> 编码</span>
             <span class="fragment">=> 测试</span>
             <span class="fragment">=> 发布</span>
             <span class="fragment">=> 运维</span>
           </section>
           <section>
-            <h3>前端的挑战</h3>
+            <h3>前后端分离开发流程</h3>
+            <img
+              class="fragment"
+              src="images/front-backend-split-flow.png"
+              alt>
+          </section>
+          <section>
+            <h3>多人协作开发流程</h3>
+            <img
+              class="fragment"
+              src="images/multi-dev.png"
+              alt>
+          </section>
+          <section>
+            <h3>你们的项目流程是怎样的呢？</h3>
+            <br>
+            <h3 class="fragment">吐槽一下，看是否能感同身受！</h3>
+          </section>
+          <section>
+            <h3>这些问题，你们遇到过么？</h3>
             <ul>
-              <li class="fragment">设计稿还原度与细节，需要来回与设计师确认</li>
-              <li class="fragment">代码修改后，构建、编译、刷新浏览器重复动作多</li>
-              <li class="fragment">单元测试相对较慢</li>
-              <li class="fragment">UI/功能测试复杂度高，执行麻烦</li>
-              <li class="fragment">发布复杂/频繁</li>
+              <li class="fragment">代码混乱，没有版本管理（代码靠压缩包共享！）</li>
+              <li class="fragment">前端等接口，后端等UI联测（OS：这锅我不背！）</li>
+              <li class="fragment">集成测试，代码相互冲突</li>
+              <li class="fragment">集成测试，项目无法运行（OS：我的模块肯定没问题）</li>
+              <li class="fragment">集成测试，所得非所需（OS：怪我了？）</li>
+            </ul>
+          </section>
+          <section>
+            <h3>集思广益 ^.^</h3>
+            <ul>
+              <li class="fragment">规范代码版本管理</li>
+              <li class="fragment">尽可能早的集成</li>
+              <li class="fragment">增强项目可见性（尽可能早的部署）</li>
+              <li class="fragment">尽可能早的测试</li>
             </ul>
           </section>
         </section>
-        <!-- section4 CI / CD -->
+        <!-- section4 持续集成：What -->
         <section class="section4">
           <section>
-            <h2 class="nf">CI / CD</h2>
+            <h2 class="nf">持续集成：What</h2>
+          </section>
+          <section>
+            <h3>
+              <span style="color: green;">持续</span>
+              <span style="color: orange;">集成</span>
+              （CI）
+            </h3>
+            <span>Continuous integration</span>
+            <ul>
+              <li class="fragment">持续集成是一种软件开发实践，宗旨是避免集成问题</li>
+              <li class="fragment">
+                真的能避免集成问题么？
+                <strong class="fragment text-danger">不一定能！</strong>
+              </li>
+              <li class="fragment">
+                但是：
+                <ul>
+                  <li class="fragment">能尽可能早的发现集成问题</li>
+                  <li class="fragment">能尽可能多的减少集成问题</li>
+                </ul>
+              </li>
+            </ul>
+            <p class="fragment pull-left text-danger">发现得越早，修复成本越低！</p>
+          </section>
+          <section>
+            <h3>
+              <span style="color: green;">持续</span>
+              交付
+              （CD）
+            </h3>
+            <span>Continuous delivery</span>
+            <ul>
+              <li class="fragment">
+                让软件产品的产出过程在一个短周期内完成，以保证软件可以稳定、持续的保持在随时可以发布的状况。
+                <br>
+                <br>
+              </li>
+              <li class="fragment">
+                目标在于让软件的构建、测试与发布变得更快以及更频繁。这种方式可以减少软件开发的成本与时间，减少风险。
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3>
+              <span style="color: green;">持续</span>
+              部署
+                （CD）
+            </h3>
+            <span>Continuous Deployment</span>
+            <ul>
+              <li class="fragment">
+                定时地、自动地将过去一个稳定的发布版本部署到生产环境。
+                <br>
+              </li>
+              <li class="fragment">VS. 持续交付：持续部署是持续交付的最终目标！</li>
+            </ul>
           </section>
         </section>
-        <!-- section5 Jenkins / Gitlab-Flow -->
+        <!-- section5 持续集成：How -->
         <section class="section5">
           <section>
-            <h2 class="nf">Jenkins / Gitlab-Flow</h2>
+            <h2 class="nf">持续集成：How</h2>
+          </section>
+          <section>
+            <h3></h3>
           </section>
         </section>
-        <!-- section6 Other -->
-        <section class="section6">
+        <!-- section6 持续集成：Why -->
+        <section class="section5">
           <section>
-            <h2 class="nf">DevOps</h2>
-            <p class="fragment font-20">
-              <a
-                href="https://github.com/hstarorg/api-gateway"
-                target="_blank">
-                https://github.com/hstarorg/api-gateway
-              </a>
-            </p>
+            <h2 class="nf">持续集成：Why</h2>
           </section>
           <section>
-            <h3>Why use Node?</h3>
+            <h3>Tell me your answers!</h3>
+            <div class="wp60 center">
+              <h6 class="fragment">不加班！</h6>
+              <h6 class="fragment pull-right">偷懒！</h6>
+              <br>
+              <h6 class="fragment pull-left">升职、加薪！</h6>
+            </div>
+          </section>
+          <section>
+            <h3>DevOps</h3>
             <img
               class="fragment"
-              src="images/why-gateway-use-node.png"
+              src="images/devops.jpg"
               alt>
           </section>
         </section>
