@@ -110,8 +110,6 @@
           </section>
           <section>
             <h3>你们的项目流程是怎样的呢？</h3>
-            <br>
-            <h3 class="fragment">吐槽一下，看是否能感同身受！</h3>
           </section>
           <section>
             <h3>这些问题，你们遇到过么？</h3>
@@ -131,6 +129,21 @@
               <li class="fragment">增强项目可见性（尽可能早的部署）</li>
               <li class="fragment">尽可能早的测试</li>
             </ul>
+            <p class="fragment text-danger">多出来的事情谁做呢？</p>
+            <p>
+              <span class="fragment">普通公司：不做</span>
+              <br>
+              <span class="fragment">TwoB 公司：加班做</span>
+              <br>
+              <span class="fragment">土豪公司：招个集成管理员</span>
+            </p>
+          </section>
+          <section>
+            <h3>办法总比问题多！</h3>
+            <img
+              class="fragment"
+              src="images/luxun.jpg"
+              alt>
           </section>
         </section>
         <!-- section4 持续集成：What -->
@@ -194,14 +207,99 @@
               <li class="fragment">VS. 持续交付：持续部署是持续交付的最终目标！</li>
             </ul>
           </section>
+          <section>
+            <h3>
+              所谓 “
+              <span style="color: green;">持续</span>
+              ”
+            </h3>
+            <ul>
+              <li class="fragment">持续，意味不间断。</li>
+              <li class="fragment">持续，靠人工势必要付出大量人力物力</li>
+            </ul>
+            <p class="fragment text-danger">在重复性动作上，人容易犯错，而机器犯错的几率几乎为零。</p>
+          </section>
         </section>
         <!-- section5 持续集成：How -->
         <section class="section5">
           <section>
             <h2 class="nf">持续集成：How</h2>
           </section>
+          <section class="tool-logo">
+            <img
+              src="images/docker.png"
+              alt>
+            <img
+              src="images/sonarqube.jpg"
+              alt>
+            <img
+              src="images/k8s.jpg"
+              alt>
+            <img
+              src="images/gitlab.jpg"
+              alt>
+            <img
+              src="images/jenkins.jpg"
+              alt>
+            <img
+              src="images/git.jpg"
+              alt>
+          </section>
           <section>
-            <h3></h3>
+            <h3>准备阶段</h3>
+            <ul>
+              <li class="fragment">统一的代码库</li>
+              <li class="fragment">多人协作代码提交流程</li>
+              <li class="fragment">自动构建</li>
+              <li class="fragment">自动化测试？！</li>
+            </ul>
+          </section>
+          <section>
+            <h3>执行阶段</h3>
+            <ol>
+              <li class="fragment">选择CI工具（推荐Jenkins）</li>
+              <li class="fragment">配置CI任务（编写脚本）</li>
+            </ol>
+            <img
+              class="fragment"
+              src="images/jenkins-flow.png"
+              alt>
+          </section>
+          <section>
+            <h3>提升阶段</h3>
+            <ul>
+              <li class="fragment">单元测试</li>
+              <li class="fragment">代码质量分析（静态分析）</li>
+              <li class="fragment">自动部署测试环境</li>
+              <li class="fragment">一键部署</li>
+              <li class="fragment">CI 报表</li>
+            </ul>
+          </section>
+          <section>
+            <h3 class="no-transform">更全面的工具：Gitlab CI/CD</h3>
+            <ol>
+              <li class="fragment">基于Git的代码管理（灵活的权限配置）</li>
+              <li class="fragment">敏捷项目管理（里程碑、Issue、看板等）</li>
+              <li class="fragment">项目文档管理（Wiki）</li>
+              <li class="fragment">全功能 CI 流水线</li>
+              <li class="fragment">K8s集成，支持主流操作系统的 CI Runner</li>
+              <li class="fragment">漂亮的可视化UI</li>
+            </ol>
+          </section>
+          <section>
+            <img
+              src="images/gitlab-1.jpg"
+              alt>
+          </section>
+          <section>
+            <img
+              src="images/gitlab-2.jpg"
+              alt>
+          </section>
+          <section>
+            <img
+              src="images/gitlab-3.jpg"
+              alt>
           </section>
         </section>
         <!-- section6 持续集成：Why -->

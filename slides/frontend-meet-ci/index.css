@@ -1,3 +1,11 @@
 .h1-title {
   text-transform: none !important;
 }
+
+.tool-logo img {
+  width: 300px;
+}
+
+.no-transform {
+  text-transform: none !important;
+}
