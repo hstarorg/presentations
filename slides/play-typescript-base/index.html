@@ -1,19 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <base href="/presentations/slides/play-typescript-base/">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <base href="/presentations/slides/play-typescript-base/" />
     <title>玩转 TypeScript：基础篇</title>
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="../../reveal.js/css/theme/blood.css" id="theme">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../reveal.js/css/reveal.css" />
+    <link rel="stylesheet" href="../../reveal.js/css/theme/blood.css" id="theme" />
     <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css">
-    <link rel="stylesheet" href="../../app/css/common.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="../../reveal.js/lib/css/zenburn.css" />
+    <link rel="stylesheet" href="../../app/css/common.css" />
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
     <div class="reveal">
@@ -23,8 +21,8 @@
           <section>
             <h2 class="nf h1-title text-right">
               玩转 TypeScript：基础篇
-              <br>
-              <br>
+              <br />
+              <br />
             </h2>
             <p class="text-right">CDEC - Jay</p>
             <!-- <p>
@@ -75,23 +73,97 @@
           <section>
             <h2 class="nf">Agenda</h2>
             <ul>
-              <li class="fragment">JavaScript 的那些糟粕</li>
+              <li class="fragment">浅析静态类型（检查）</li>
               <li class="fragment">TypeScript 前世今生</li>
               <li class="fragment">使用 TypeScript</li>
               <li class="fragment">玩转 TypeScript 类型</li>
             </ul>
           </section>
         </section>
-        <!-- section3 JavaScript 的那些糟粕 -->
+        <!-- section3 浅析静态类型-->
         <section class="section3">
           <section>
-            <h2 class="nf h1-title">JavaScript 的那些糟粕</h2>
+            <h2 class="nf h1-title">浅析静态类型（检查）</h2>
+          </section>
+          <section>
+            <h3>何为静态类型（检查）？</h3>
+            <p class="fragment">弱类型 VS. 强类型</p>
+            <p class="fragment">静态类型检查 VS. 动态类型检查</p>
+            <p class="fragment text-left">
+              个人理解：<strong>
+                静态类型检查就是在编译期间就能检查到具体的类型；弱类型则是偏向于容忍隐式类型转换
+              </strong>
+            </p>
+            <p class="fragment text-left">
+              更多讨论，请参考：<a href="https://www.zhihu.com/question/19918532" target="_blank">知乎讨论</a>
+            </p>
+          </section>
+          <section>
+            <h3>静态类型检查的优势</h3>
+            <ul>
+              <li class="fragment">类型检查，规避隐式类型转换、书写错误问题</li>
+              <li class="fragment">代码自动完成（补全），提高开发效率</li>
+              <li class="fragment">重构相对更容易</li>
+              <li class="fragment">代码健壮性更好</li>
+            </ul>
+          </section>
+          <section>
+            <h3>静态类型检查的劣势</h3>
+            <ul>
+              <li class="fragment">约束较多，不够灵活</li>
+              <li class="fragment">需要额外的一些类型定义，影响开发效率</li>
+              <li class="fragment">需要编译，有时候编译时间较长</li>
+            </ul>
+          </section>
+          <section>
+            <h3>JavaScript：动态、弱类型</h3>
+            <ul>
+              <li class="fragment">大量的隐式转换</li>
+              <li class="fragment">缺少类型检查，导致较容易出现拼写错误</li>
+              <li class="fragment">灵活 VS. 健壮性</li>
+              <li class="fragment">
+                动态一时爽、重构火葬场<span class="fragment text-danger">（一直动态一直爽？）</span>
+              </li>
+            </ul>
+            <p class="fragment text-danger">有没有可能，为 JavaScript 插上类型的翅膀？</p>
           </section>
         </section>
         <!-- section4 TypeScript 前世今生 -->
         <section class="section4">
           <section>
             <h2 class="nf h1-title">TypeScript 前世今生</h2>
+          </section>
+          <section>
+            <h3>缘起</h3>
+            <ul>
+              <li class="fragment">
+                ES6 以前，JavaScript 虽强大灵活但不够简洁
+                <br />
+                <span class="fragment">JavaScript 转译语言应运而生：<span class="text-danger">CoffeeScript</span></span>
+              </li>
+              <li class="fragment">
+                随着前端的发展，JavaScript 应用越来越大，JavaScript 语言本身的短板日渐凸显
+                <br />
+                <span class="fragment"> Google：<span class="text-danger">Dart（因 Flutter 重获新生）</span> </span>
+                <br />
+                <span class="fragment"> Facebook：<span class="text-danger">Flow</span> </span>
+                <br />
+                <span class="fragment"> Microsoft：<span class="text-danger">TypeScript</span> </span>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3>今生</h3>
+            <ul>
+              <li class="fragment">TypeScript 是一种由微软主导开发的开源编程<span class="text-danger">语言</span></li>
+              <li class="fragment">TypeScript 设计目标是开发大型应用</li>
+              <li class="fragment">
+                TypeScript 是 JavaScript 的严格超集（兼容 JavaScript）
+              </li>
+              <li class="fragment">TypeScript 是一种给 JavaScript 添加特性的语言扩展</li>
+              <li class="fragment">TypeScript 已成为大型应用的主流选择</li>
+            </ul>
+            <p class="fragment text-danger">那，如何使用 TypeScript 呢？</p>
           </section>
         </section>
         <!-- section5 使用 TypeScript -->
@@ -110,7 +182,7 @@
         <section class="section7">
           <section>
             <h2 class="nf">
-             Q? A!
+              Q? A!
             </h2>
           </section>
         </section>
