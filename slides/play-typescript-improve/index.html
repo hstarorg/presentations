@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <base href="/presentations/slides/play-typescript-base/" />
-    <title>玩转 TypeScript：基础篇</title>
+    <base href="/presentations/slides/play-typescript-improve/" />
+    <title>玩转 TypeScript：进阶篇</title>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../../reveal.js/css/reveal.css" />
     <link rel="stylesheet" href="../../reveal.js/css/theme/blood.css" id="theme" />
@@ -20,7 +20,7 @@
         <section class="section1">
           <section>
             <h2 class="nf h1-title text-right">
-              玩转 TypeScript：基础篇
+              玩转 TypeScript：进阶篇
               <br />
               <br />
             </h2>
@@ -171,217 +171,11 @@
           <section>
             <h2 class="nf h1-title">使用 TypeScript</h2>
           </section>
-          <section>
-            <h3 class="h1-title">Playgroud</h3>
-            <p class="fragment">
-              最便捷的演练 TypeScript 的地方莫过于：<br />
-              <a href="https://www.typescriptlang.org/play/index.html" target="_blank">TypeScript Playgroud</a>
-            </p>
-            <p class="fragment">当然，这种方式更多用于学习语法。</p>
-          </section>
-          <section>
-            <h3 class="h1-title">TSC 命令编译</h3>
-            <ol>
-              <li class="fragment"><code>npm i typescript -g</code>全局安装 TypeScript</li>
-              <p class="fragment">或者 <code>npm i typescript -D</code> 本地安装</p>
-              <li class="fragment">编写你的第一个 TypeScript 文件：hello.ts</li>
-              <li class="fragment"><code>tsc hello.ts</code> 编译 ts 文件</li>
-            </ol>
-          </section>
-          <section>
-            <h3 class="h1-title">Deno</h3>
-            <p>Deno：<a href="https://github.com/denoland/deno" target="_blank">https://github.com/denoland/deno</a></p>
-            <p class="fragment">A secure JavaScript/TypeScript runtime built with V8, Rust, and Tokio</p>
-            <p class="fragment">Tokio：The asynchronous run-time for the Rust programming language.</p>
-          </section>
-          <section>
-            <h4 class="h1-title">Deno Web Server</h4>
-            <pre>
-<code>import { listenAndServe } from '../deno_std/net/http.ts';
-
-function uint8array2string(uint8Array: Uint8Array): string {
-  return new TextDecoder().decode(uint8Array);
-}
-
-function string2uint8array(text: string): Uint8Array {
-  return new TextEncoder().encode(text);
-}
-
-async function main() {
-  await listenAndServe('0.0.0.0:9999', req => {
-    console.log(req.url, req.method, req.headers, req.proto);
-    req.respond({
-      status: 200,
-      headers: new Headers({ ContentType: 'application/json' }),
-      body: string2uint8array(JSON.stringify({ hello: 'deno!' }))
-    });
-  });
-}
-
-main();
-</code></pre>
-          </section>
-          <section>
-            <h3 class="h1-title">With @babel/preset-typescript Or ts-loader</h3>
-            <ul>
-              <li class="fragment">
-                @babel/preset-typescript：<a href="https://babeljs.io/docs/en/babel-preset-typescript" target="_blank"
-                  >https://babeljs.io/docs/en/babel-preset-typescript</a
-                >
-              </li>
-              <li class="fragment">
-                ts-loader：<a href="https://github.com/TypeStrong/ts-loader" target="_blank"
-                  >https://github.com/TypeStrong/ts-loader</a
-                >
-              </li>
-              <li class="fragment">
-                awesome-typescript-loader：<a
-                  href="https://github.com/s-panferov/awesome-typescript-loader"
-                  target="_blank"
-                  >https://github.com/s-panferov/awesome-typescript-loader</a
-                >
-              </li>
-            </ul>
-          </section>
         </section>
         <!-- section6 玩转 TypeScript 类型 -->
         <section class="section6">
           <section>
             <h2 class="nf h1-title">玩转 TypeScript 类型</h2>
-          </section>
-          <section>
-            <h3 class="h1-title">JavaScript 基本数据类型？</h3>
-            <ul>
-              <li class="fragment">undefined</li>
-              <li class="fragment">null</li>
-              <li class="fragment">boolean(Boolean)</li>
-              <li class="fragment">number(Number)</li>
-              <li class="fragment">string(String)</li>
-              <li class="fragment">symbol(Symbol)</li>
-            </ul>
-          </section>
-          <section>
-            <h3 class="h1-title">TypeScript 基本类型</h3>
-            <ul>
-              <li class="fragment">All javaScript 基本数据类型</li>
-              <li class="fragment">Array：Array<T&gt; | T[]</li>
-              <li class="fragment">Tuple（元组）</li>
-              <li class="fragment">enum（枚举）</li>
-              <li class="fragment">void（null or undefined）</li>
-              <li class="fragment">never（永不存在值）</li>
-              <li class="fragment">any（万能，任意类型）</li>
-            </ul>
-          </section>
-          <section>
-            <h3 class="h1-title">TypeScript 接口类型</h3>
-          </section>
-          <section>
-            <h4 class="h1-title">通过 interface 定义复杂类型</h4>
-            <pre><code>
-  interface IPerson {
-    age?: number; // 可选属性
-    readonly name: string; // 只读属性
-    [idx: number]: string; // 索引类型（模拟字典）
-  }
-
-  class Person implements IPerson {
-    [idx: number]: string;
-    age?: number;
-    name: string;
-  }
-
-</code></pre>
-          </section>
-          <section>
-            <h4 class="h1-title">通过 interface 定义函数类型</h4>
-            <pre><code>
-  interface IFunc {
-    (n1: number, n2: number): number;
-  }
-
-  const add: IFunc = function(n1, n2) {
-    // 有了类型约束后，会自动进行类型推断
-    return n1 + n2;
-  };
-
-</code></pre>
-          </section>
-          <section>
-            <h4 class="h1-title">通过 interface 定义混合类型</h4>
-            <pre><code>
-  interface IFunc2 {
-    (n1: number, n2: number): number;
-    displayName: string;
-  }
-
-  const add2: IFunc2 = function(n1, n2) {
-    // 有了类型约束后，会自动进行类型推断
-    return n1 + n2;
-  };
-  add2.displayName = 'add2'; // 如果没有这句，会怎样？
-
-</code></pre>
-          </section>
-          <section>
-            <h4 class="h1-title">类类型：静态部分 VS. 实例部分</h4>
-            <pre><code>
-  interface PersonInterface {
-    name: string;
-    age?: number;
-    sleep: (hour: number) => string;
-  }
-
-  interface PersonCtor {
-    // 定义构造
-    new (name: string, age?: number): PersonInterface;
-  }
-
-  class PersonIns implements PersonInterface {
-    sleep: (hour: number) => string;
-    name: string;
-  }
-
-  function createPerson(ctor: PersonCtor, name: string): PersonInterface {
-    return new ctor(name);
-  }
-
-  createPerson(PersonIns, 'hi');
-
-</code></pre>
-          </section>
-          <section>
-            <h4 class="h1-title">问答：如下代码是否可以通过类型校验？</h4>
-            <pre><code>
-  function fun1(a: { a: number }) {}
-
-  fun1({ a: 1, b: 2 });
-
-</code></pre>
-          </section>
-          <section>
-            <h3 class="h1-title">TypeScript 类类型</h3>
-            <ul>
-              <li class="fragment">属性修饰符（作用域）</li>
-              <li class="fragment">属性修饰符（只读、静态）</li>
-              <li class="fragment">Getter and Setter</li>
-              <li class="fragment">抽象类</li>
-              <li class="fragment">类作为接口使用</li>
-            </ul>
-            <p class="fragment text-danger">Demo演示</p>
-          </section>
-          <section>
-            <h3 class="h1-title">TypeScript 高级类型</h3>
-            <ul>
-              <li class="fragment">交叉类型（多个类型取并集）</li>
-              <li class="fragment">联合类型（多个类型选其一）</li>
-              <li class="fragment">类型别名</li>
-              <li class="fragment">类型别名 VS. Interface</li>
-            </ul>
-            <p class="fragment text-danger">Demo演示</p>
-          </section>
-          <section>
-            <h3>类型图谱</h3>
-            <img src="images/ts-type.png" alt="" />
           </section>
         </section>
         <!-- section7 Discus -->
