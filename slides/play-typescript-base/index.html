@@ -19,7 +19,7 @@
         <!-- section1 个人介绍 -->
         <section class="section1">
           <section>
-            <h2 class="nf h1-title text-right">
+            <h2 class="nf no-transform text-right">
               玩转 TypeScript：基础篇
               <br />
               <br />
@@ -83,7 +83,7 @@
         <!-- section3 浅析静态类型-->
         <section class="section3">
           <section>
-            <h2 class="nf h1-title">浅析静态类型（检查）</h2>
+            <h2 class="nf no-transform">浅析静态类型（检查）</h2>
           </section>
           <section>
             <h3>何为静态类型（检查）？</h3>
@@ -131,7 +131,7 @@
         <!-- section4 TypeScript 前世今生 -->
         <section class="section4">
           <section>
-            <h2 class="nf h1-title">TypeScript 前世今生</h2>
+            <h2 class="nf no-transform">TypeScript 前世今生</h2>
           </section>
           <section>
             <h3>缘起</h3>
@@ -169,10 +169,10 @@
         <!-- section5 使用 TypeScript -->
         <section class="section5">
           <section>
-            <h2 class="nf h1-title">使用 TypeScript</h2>
+            <h2 class="nf no-transform">使用 TypeScript</h2>
           </section>
           <section>
-            <h3 class="h1-title">Playgroud</h3>
+            <h3 class="no-transform">Playgroud</h3>
             <p class="fragment">
               最便捷的演练 TypeScript 的地方莫过于：<br />
               <a href="https://www.typescriptlang.org/play/index.html" target="_blank">TypeScript Playgroud</a>
@@ -180,7 +180,7 @@
             <p class="fragment">当然，这种方式更多用于学习语法。</p>
           </section>
           <section>
-            <h3 class="h1-title">TSC 命令编译</h3>
+            <h3 class="no-transform">TSC 命令编译</h3>
             <ol>
               <li class="fragment"><code>npm i typescript -g</code>全局安装 TypeScript</li>
               <p class="fragment">或者 <code>npm i typescript -D</code> 本地安装</p>
@@ -189,13 +189,13 @@
             </ol>
           </section>
           <section>
-            <h3 class="h1-title">Deno</h3>
+            <h3 class="no-transform">Deno</h3>
             <p>Deno：<a href="https://github.com/denoland/deno" target="_blank">https://github.com/denoland/deno</a></p>
             <p class="fragment">A secure JavaScript/TypeScript runtime built with V8, Rust, and Tokio</p>
             <p class="fragment">Tokio：The asynchronous run-time for the Rust programming language.</p>
           </section>
           <section>
-            <h4 class="h1-title">Deno Web Server</h4>
+            <h4 class="no-transform">Deno Web Server</h4>
             <pre>
 <code>import { listenAndServe } from '../deno_std/net/http.ts';
 
@@ -222,7 +222,7 @@ main();
 </code></pre>
           </section>
           <section>
-            <h3 class="h1-title">With @babel/preset-typescript Or ts-loader</h3>
+            <h3 class="no-transform">With @babel/preset-typescript Or ts-loader</h3>
             <ul>
               <li class="fragment">
                 @babel/preset-typescript：<a href="https://babeljs.io/docs/en/babel-preset-typescript" target="_blank"
@@ -247,10 +247,10 @@ main();
         <!-- section6 玩转 TypeScript 类型 -->
         <section class="section6">
           <section>
-            <h2 class="nf h1-title">玩转 TypeScript 类型</h2>
+            <h2 class="nf no-transform">玩转 TypeScript 类型</h2>
           </section>
           <section>
-            <h3 class="h1-title">JavaScript 基本数据类型？</h3>
+            <h3 class="no-transform">JavaScript 基本数据类型？</h3>
             <ul>
               <li class="fragment">undefined</li>
               <li class="fragment">null</li>
@@ -261,7 +261,7 @@ main();
             </ul>
           </section>
           <section>
-            <h3 class="h1-title">TypeScript 基本类型</h3>
+            <h3 class="no-transform">TypeScript 基本类型</h3>
             <ul>
               <li class="fragment">All javaScript 基本数据类型</li>
               <li class="fragment">Array：Array<T&gt; | T[]</li>
@@ -273,10 +273,10 @@ main();
             </ul>
           </section>
           <section>
-            <h3 class="h1-title">TypeScript 接口类型</h3>
+            <h3 class="no-transform">TypeScript 接口类型</h3>
           </section>
           <section>
-            <h4 class="h1-title">通过 interface 定义复杂类型</h4>
+            <h4 class="no-transform">通过 interface 定义复杂类型</h4>
             <pre><code>
   interface IPerson {
     age?: number; // 可选属性
@@ -293,7 +293,7 @@ main();
 </code></pre>
           </section>
           <section>
-            <h4 class="h1-title">通过 interface 定义函数类型</h4>
+            <h4 class="no-transform">通过 interface 定义函数类型</h4>
             <pre><code>
   interface IFunc {
     (n1: number, n2: number): number;
@@ -307,7 +307,7 @@ main();
 </code></pre>
           </section>
           <section>
-            <h4 class="h1-title">通过 interface 定义混合类型</h4>
+            <h4 class="no-transform">通过 interface 定义混合类型</h4>
             <pre><code>
   interface IFunc2 {
     (n1: number, n2: number): number;
@@ -323,7 +323,7 @@ main();
 </code></pre>
           </section>
           <section>
-            <h4 class="h1-title">类类型：静态部分 VS. 实例部分</h4>
+            <h4 class="no-transform">类类型：静态部分 VS. 实例部分</h4>
             <pre><code>
   interface PersonInterface {
     name: string;
@@ -350,7 +350,7 @@ main();
 </code></pre>
           </section>
           <section>
-            <h4 class="h1-title">问答：如下代码是否可以通过类型校验？</h4>
+            <h4 class="no-transform">问答：如下代码是否可以通过类型校验？</h4>
             <pre><code>
   function fun1(a: { a: number }) {}
 
@@ -359,7 +359,7 @@ main();
 </code></pre>
           </section>
           <section>
-            <h3 class="h1-title">TypeScript 类类型</h3>
+            <h3 class="no-transform">TypeScript 类类型</h3>
             <ul>
               <li class="fragment">属性修饰符（作用域）</li>
               <li class="fragment">属性修饰符（只读、静态）</li>
@@ -370,7 +370,7 @@ main();
             <p class="fragment text-danger">Demo演示</p>
           </section>
           <section>
-            <h3 class="h1-title">TypeScript 高级类型</h3>
+            <h3 class="no-transform">TypeScript 高级类型</h3>
             <ul>
               <li class="fragment">交叉类型（多个类型取并集）</li>
               <li class="fragment">联合类型（多个类型选其一）</li>

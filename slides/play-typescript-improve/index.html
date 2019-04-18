@@ -19,61 +19,20 @@
         <!-- section1 个人介绍 -->
         <section class="section1">
           <section>
-            <h2 class="nf h1-title text-right">
+            <h2 class="nf no-transform text-right">
               玩转 TypeScript：进阶篇
               <br />
               <br />
             </h2>
             <p class="text-right">CDEC - Jay</p>
-            <!-- <p>
-              胡敏&nbsp;
-              <a
-                href="http://nesc.newegg.com.cn/"
-                target="_blank">
-                @新蛋科技
-              </a>
-            </p> -->
           </section>
-          <!-- <section>
-            <h2 class="ms-font">About me</h2>
-            <ul>
-              <li class="fragment">
-                Github：
-                <a
-                  href="https://github.com/hstarorg"
-                  target="_blank">
-                  hstarorg
-                </a>
-              </li>
-              <li class="fragment">
-                博客园：
-                <a
-                  href="http://www.cnblogs.com/humin/"
-                  target="_blank">
-                  幻天芒
-                </a>
-              </li>
-              <li class="fragment">
-                邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：
-                <a href="mailto:hm910705@163.com">hm910705@163.com</a>
-              </li>
-              <li class="fragment">
-                Q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Q：
-                <a href="javascript:;">1028332273</a>
-              </li>
-              <li class="fragment">
-                微&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;信：
-                <a href="javascript:;">hm910705</a>
-              </li>
-            </ul>
-          </section> -->
         </section>
         <!-- section2 大纲 -->
         <section class="section2">
           <section>
             <h2 class="nf">Agenda</h2>
             <ul>
-              <li class="fragment">function 与 泛型</li>
+              <li class="fragment">函数 & 泛型</li>
               <li class="fragment">模块 & 命名空间</li>
               <li class="fragment">配置 tsconfig.json</li>
               <li class="fragment">TypeScript 模块解析</li>
@@ -81,102 +40,427 @@
             </ul>
           </section>
         </section>
-        <!-- section3 function 与 泛型-->
+        <!-- section3 函数 与 泛型-->
         <section class="section3">
           <section>
-            <h2 class="nf h1-title">浅析静态类型（检查）</h2>
+            <h2 class="nf no-transform">函数 与 泛型</h2>
           </section>
           <section>
-            <h3>何为静态类型（检查）？</h3>
-            <p class="fragment">弱类型 VS. 强类型</p>
-            <p class="fragment">静态类型检查 VS. 动态类型检查</p>
-            <p class="fragment text-left">
-              个人理解：<strong>
-                静态类型检查就是在编译期间就能检查到具体的类型；弱类型则是偏向于容忍隐式类型转换
-              </strong>
-            </p>
-            <p class="fragment text-left">
-              更多讨论，请参考：<a href="https://www.zhihu.com/question/19918532" target="_blank">知乎讨论</a>
-            </p>
-          </section>
-          <section>
-            <h3>静态类型检查的优势</h3>
+            <h3>函数</h3>
             <ul>
-              <li class="fragment">类型检查，规避隐式类型转换、书写错误问题</li>
-              <li class="fragment">代码自动完成（补全），提高开发效率</li>
-              <li class="fragment">重构相对更容易</li>
-              <li class="fragment">代码健壮性更好</li>
+              <li class="fragment">参数类型，返回值类型</li>
+              <li class="fragment">可选参数</li>
+              <li class="fragment">剩余参数</li>
+              <li class="fragment">this参数</li>
+              <li class="fragment">函数重载</li>
             </ul>
           </section>
           <section>
-            <h3>静态类型检查的劣势</h3>
+            <h4>参数类型，返回值类型</h4>
+            <pre><code>
+  function add(x: number, y: number): number {
+    return x + y;
+  }
+            </code></pre>
+          </section>
+          <section>
+            <h4>可选参数</h4>
+            <pre><code>
+  function add(x: number, y: number, z?: number){
+    return x + y + (z || 0);
+  }
+  add(1, 2);
+  add(1, 2, 3);
+  add(1, 2, 3, 4); // Expected 2-3 arguments, but got 4.
+            </code></pre>
+          </section>
+          <section>
+            <h4>剩余参数</h4>
+            <pre><code>
+  function add(x: number, y: number, ...nums: number[]) {
+    return x + y + nums.reduce((current, item, arr) => { current += item; return current; }, 0);
+  }
+
+  add(1, 2, 3, 4, 5); // 15
+            </code></pre>
+          </section>
+          <section>
+            <h4>this参数</h4>
+            <pre><code>
+  type FunThisType = { a: number, b: string };
+  // 限定 this 的类型
+  function fun(this: FunThisType) {
+    return this.a;
+  }
+            </code></pre>
+          </section>
+          <section>
+            <h4>函数重载</h4>
+            <pre><code>
+  function plus(a1: number, a2: number): number;
+  function plus(a1: string, a2: string): string;
+  function plus(a1, a2): any {
+    if (typeof a1 === 'number') {
+      return a1 + a2;
+    }
+    return a1 + a2;
+  }
+
+  plus(1, 2); // 3
+  plus(1, '2'); // Argument of type '1' is not assignable to parameter of type 'string'.
+  plus('1', '2'); // '12'
+            </code></pre>
+          </section>
+          <section>
+            <h3>泛型</h3>
             <ul>
-              <li class="fragment">约束较多，不够灵活</li>
-              <li class="fragment">需要额外的一些类型定义，影响开发效率</li>
-              <li class="fragment">需要编译，有时候编译时间较长</li>
+              <li class="fragment">使用泛型</li>
+              <li class="fragment">泛型类</li>
+              <li class="fragment">泛型约束</li>
             </ul>
           </section>
           <section>
-            <h3>JavaScript：动态、弱类型</h3>
-            <ul>
-              <li class="fragment">大量的隐式转换</li>
-              <li class="fragment">缺少类型检查，导致较容易出现拼写错误</li>
-              <li class="fragment">灵活 VS. 健壮性</li>
-              <li class="fragment">
-                动态一时爽、重构火葬场<span class="fragment text-danger">（一直动态一直爽？）</span>
-              </li>
-            </ul>
-            <p class="fragment text-danger">有没有可能，为 JavaScript 插上类型的翅膀？</p>
+            <h4>使用泛型</h4>
+            <pre><code>
+  function fun&lt;T>(a: T): string {
+    return typeof a;
+  }
+  // 函数变量使用泛型
+  const fun2: &lt;T>(a: T) => string = a => {
+    return typeof a;
+  }
+
+  fun&lt;number>(1);
+  fun('a');
+  fun&lt;number>('2'); // Argument of type '"2"' is not assignable to parameter of type 'number'.
+            </code></pre>
+          </section>
+          <section>
+            <h4>泛型类</h4>
+            <pre><code>
+  class Store&lt;T>{
+    valueArr: T[];
+    push(val: T) {
+      this.valueArr.push();
+    }
+    pop() {
+      return this.valueArr.pop();
+    }
+  }
+
+  const numberStore = new Store&lt;number>();
+  numberStore.push(1);
+  numberStore.push('1'); // Argument of type '"1"' is not assignable to parameter of type 'number'.
+              </code></pre>
+          </section>
+          <section>
+            <h4>泛型约束</h4>
+            <pre><code>
+  class Person {
+    name: string;
+  }
+  class Man extends Person {
+
+  }
+  function createUser&lt;T extends Person>(user: T) {
+    return user;
+  }
+  createUser&lt;Person>(Man);
+  createUser('abc'); // Argument of type '"abc"' is not assignable to parameter of type 'Person'.
+                </code></pre>
+          </section>
+          <section>
+            <pre><code>
+  function getProp&lt;T, K extends keyof T>(obj: T, key: K) {
+    return obj[key];
+  }
+
+  const obj = { a: 1, b: 'b' };
+
+  getProp(obj, 'a')
+  getProp(obj, 'c'); // Argument of type '"c"' is not assignable to parameter of type '"b" | "a"'.
+              </code></pre>
           </section>
         </section>
-        <!-- section4 TypeScript 前世今生 -->
+        <!-- section4 模块 & 命名空间 -->
         <section class="section4">
           <section>
-            <h2 class="nf h1-title">TypeScript 前世今生</h2>
+            <h2 class="nf no-transform">模块 & 命名空间</h2>
           </section>
           <section>
-            <h3>缘起</h3>
-            <ul>
-              <li class="fragment">
-                ES6 以前，JavaScript 虽强大灵活但不够简洁
-                <br />
-                <span class="fragment">JavaScript 转译语言应运而生：<span class="text-danger">CoffeeScript</span></span>
-              </li>
-              <li class="fragment">
-                随着前端的发展，JavaScript 应用越来越大，JavaScript 语言本身的短板日渐凸显
-                <br />
-                <span class="fragment"> Google：<span class="text-danger">Dart（因 Flutter 重获新生）</span> </span>
-                <br />
-                <span class="fragment"> Facebook：<span class="text-danger">Flow</span> </span>
-                <br />
-                <span class="fragment"> Microsoft：<span class="text-danger">TypeScript</span> </span>
-              </li>
-            </ul>
+            <h3>“模块化”规范</h3>
+            <img class="fragment simple-img" src="images/modular.png" alt="" />
           </section>
           <section>
-            <h3>今生</h3>
-            <ul>
-              <li class="fragment">TypeScript 是一种由微软主导开发的开源编程<span class="text-danger">语言</span></li>
-              <li class="fragment">TypeScript 设计目标是开发大型应用</li>
-              <li class="fragment">
-                TypeScript 是 JavaScript 的严格超集（兼容 JavaScript）
-              </li>
-              <li class="fragment">TypeScript 是一种给 JavaScript 添加特性的语言扩展</li>
-              <li class="fragment">TypeScript 已成为大型应用的主流选择</li>
-            </ul>
-            <p class="fragment text-danger">那，如何使用 TypeScript 呢？</p>
+            <h4>ES6 Module Usage</h4>
+            <pre><code>
+  // a.ts
+  export const a = 1;
+  export default 2;
+
+  // b.ts
+  import { a } from './a';
+  import defaultImport from './a';
+  // 重新导出
+  export const newExport = defaultImport;
+  // 别名导出
+  export { a as value } from './a';
+            </code></pre>
+          </section>
+          <section>
+            <h3>命名空间</h3>
+            <div class="wp50">
+              <pre><code>
+  // developer A
+  var a = 1;
+  function getA() {
+    return a;
+  }
+  // developer B（after 500 lines）
+  var a = 2;
+  // developer A
+  getA();
+              </code></pre>
+            </div>
+            <div class="wp50">
+              <pre class="fragment"><code>
+  // developer A
+  var DA = {
+    a: 1,
+    getA(){
+      return this.a;
+    }
+  }
+  // developer B
+  var DB = {
+    a: 2
+  }
+  // developer A
+  DA.getA();
+              </code></pre>
+            </div>
           </section>
         </section>
-        <!-- section5 使用 TypeScript -->
+        <!-- section5 配置 tsconfig.json -->
         <section class="section5">
           <section>
-            <h2 class="nf h1-title">使用 TypeScript</h2>
+            <h2 class="nf no-transform">配置 tsconfig.json</h2>
+          </section>
+          <section>
+            <h3>tsconfig.json 基本结构</h3>
+            <pre><code>
+  {
+    "compilerOptions": {
+      "module": "commonjs", // 生成的模块类型
+      "noImplicitAny": true, // 是否允许TypeScript 推断 any。
+      "strictNullChecks": true, // 强制 null 检查（null 值只能用于null类型）
+      "removeComments": true, // 移除注释
+      "sourceMap": true // 开启 SourceMap
+    },
+    "files": [
+      "hello.ts"
+    ],
+    "include": [],
+    "exclude": []
+  }
+            </code></pre>
+            <p class="fragment text-danger">注意：在命令行上指定的编译选项会覆盖在 tsconfig.json 文件里的相应选项。</p>
+          </section>
+          <section>
+            <h3>常用编译属性</h3>
+            <ul>
+              <li>noImplicitAny</li>
+              <li>strictNullChecks</li>
+              <li>noImplicitThis</li>
+              <li>noImplicitReturns</li>
+              <li>...</li>
+            </ul>
+          </section>
+          <section>
+            <h4 class="no-transform">noImplicitAny</h4>
+            <small
+              >是否禁用无法推断类型时，自动使用 any。如果为true，则必须显示设置无法推断的类型。建议设置为 true</small
+            >
+            <pre><code>
+  // If true
+  function f1(a) { // Parameter 'a' implicitly has an 'any' type.
+  }
+  function f2(a: any) {
+  }
+            </code></pre>
+          </section>
+          <section>
+            <h4 class="no-transform">strictNullChecks</h4>
+            <small>是否禁用 null 作为任意类型的子类型。如果是，则禁用，意味着 null类型的值只能是null </small>
+            <pre><code>
+  // If true
+  var a: void = null; // Type 'null' is not assignable to type 'void'.
+  var b: undefined = null; // Type 'null' is not assignable to type 'undefined'.
+  var c: null = null;
+              </code></pre>
+          </section>
+          <section>
+            <h4 class="no-transform">noImplicitThis</h4>
+            <small>当 this 表达式的值为 any 类型的时候，生成一个错误。</small>
+            <pre><code>
+  // If true
+  // 'this' implicitly has type 'any' because it does not have a type annotation.
+  function Greeter(greeting: string) {
+    this.greeting = greeting;
+  }
+                </code></pre>
+          </section>
+          <section>
+            <h4 class="no-transform">noImplicitReturns</h4>
+            <small>是否强制函数所有分支都要有 return 。设置为true，则强制</small>
+            <pre><code>
+  // If true
+  function fun(a: any) { // Not all code paths return a value.
+    if (a == 1) {
+      return 'abb';
+    }
+  }
+                  </code></pre>
+          </section>
+          <section>
+            <h3 class="no-transform">files & include & exclude</h3>
+            <ul>
+              <li class="fragment font-small">
+                如果 files 以及 include 没有指定，则默认编译当前目录以及子目录下的所有 TypeScript 文件，同时排除 exclude
+                中指定的文件（如果有）。
+              </li>
+              <li class="fragment font-small">
+                include 引入的文件，总是可以通过 exclude 排除。files 指定的文件，无法使用 exclude 排除。
+              </li>
+              <li class="fragment font-small">任何被 files 或 include 指定的文件所引用的文件也会被包含进来。</li>
+              <li class="fragment font-small">
+                exclude 默认情况下会排除 node_modules，bower_components，jspm_packages 和&lt;outDir> 目录。
+              </li>
+              <li class="fragment font-small">
+                不推荐只有扩展名的不同来区分同目录下的文件。假设我们包含了index.ts，那么index.d.ts和index.js会被排除在外。
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3 class="no-transform">@types & typeRoots & types</h3>
+            <ul>
+              <li class="fragment font-small">默认所有层级的 @types 都会被包含（直到根目录）。</li>
+              <li class="fragment font-small">如果设置了 typeRoots，则只有 typeRoots 下的包才会被包含。</li>
+              <li class="fragment font-small">如果设置了 types，则只有设置的包才会被包含</li>
+              <li class="fragment font-small">指定 "types": [] 可以禁用自动引入 @types 包。</li>
+            </ul>
           </section>
         </section>
-        <!-- section6 玩转 TypeScript 类型 -->
+        <!-- section6 TypeScript 模块解析 -->
         <section class="section6">
           <section>
-            <h2 class="nf h1-title">玩转 TypeScript 类型</h2>
+            <h2 class="nf no-transform">TypeScript 模块解析</h2>
+          </section>
+          <section>
+            <h3>模块解析策略</h3>
+            <img class="simple-img" src="images/module-resolution.png" alt="" />
+          </section>
+          <section>
+            <h3>相对 VS. 非相对 导入</h3>
+            <img class="simple-img" src="images/module-resolution2.png" alt="" />
+          </section>
+          <section>
+            <h3>路径映射</h3>
+            <pre><code>
+  {
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "jquery": ["node_modules/jquery/dist/jquery"] // 此处映射是相对于"baseUrl"
+      }
+    }
+  }
+            </code></pre>
+          </section>
+        </section>
+        <!-- section7 编写 d.ts 类型定义文件 -->
+        <section class="section7">
+          <section>
+            <h2 class="nf no-transform">编写 d.ts 类型定义文件</h2>
+          </section>
+          <section>
+            <h3 class="no-transform">一个 d.ts 文件 Demo</h3>
+            <pre><code>
+  /// &lt;reference types="node" />
+  import * as http from "http";
+
+  declare function createServer(): createServer.Server;
+
+  declare namespace createServer {
+      export type ServerHandle = HandleFunction | http.Server;
+
+      type NextFunction = (err?: any) => void;
+
+      export type SimpleHandleFunction = (req: http.IncomingMessage, res: http.ServerResponse) => void;
+      export type NextHandleFunction = (req: http.IncomingMessage, res: http.ServerResponse, next: NextFunction) => void;
+      export type ErrorHandleFunction = (err: any, req: http.IncomingMessage, res: http.ServerResponse, next: NextFunction) => void;
+      export type HandleFunction = SimpleHandleFunction | NextHandleFunction | ErrorHandleFunction;
+
+      export interface ServerStackItem {
+          route: string;
+          handle: ServerHandle;
+      }
+
+      export interface Server extends NodeJS.EventEmitter {
+          (req: http.IncomingMessage, res: http.ServerResponse, next?: Function): void;
+
+          route: string;
+          stack: ServerStackItem[];
+          use(fn: HandleFunction): Server;
+          use(route: string, fn: HandleFunction): Server;
+          handle(req: http.IncomingMessage, res: http.ServerResponse, next: Function): void;
+          listen(port: number, hostname?: string, backlog?: number, callback?: Function): http.Server;
+          listen(port: number, hostname?: string, callback?: Function): http.Server;
+          listen(path: string, callback?: Function): http.Server;
+          listen(handle: any, listeningListener?: Function): http.Server;
+      }
+  }
+
+  export = createServer;
+            </code></pre>
+          </section>
+          <section>
+            <h3>快速引入一个外部模块</h3>
+            <pre><code>
+  import a from 'ext-lib';
+            </code></pre>
+            <div class="fragment">
+              <pre><code>
+  // global.d.ts
+  declare module 'ext-lib';
+              </code></pre>
+            </div>
+          </section>
+          <section>
+            <h3>扩展已有的类型定义</h3>
+            <pre class="fragment"><code>
+  // 以 koa 为例
+  import * as koa from 'koa';
+  const app = new koa();
+
+  app.use((ctx: koa.Context) => {
+    ctx.request.abc;
+    ctx.request.ddd; // Property 'ddd' does not exist on type 'Request'.
+  });
+
+  declare module 'koa' {
+    export interface BaseRequest {
+      abc: string;
+    }
+  }
+          </code></pre>
+          </section>
+          <section>
+            <h3 class="no-transform">如何发布 d.ts 文件？</h3>
+            <ol>
+              <li class="fragment">与你的 npm 包一起发布，通过 package.json -> types （typings同义）指定 d.ts 文件</li>
+              <li class="fragment">发布到 npm 上的 <a href="https://www.npmjs.com/~types" target="_blank">@types organization</a>（提交 PR 到 https://github.com/DefinitelyTyped/DefinitelyTyped） </li>
+            </ol>
           </section>
         </section>
         <!-- section7 Discus -->
